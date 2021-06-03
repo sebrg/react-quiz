@@ -1,6 +1,16 @@
 import React from 'react';
-import './App.css';
+/* import Button from '@material-ui/core/Button'; */
+import Layout from './layout'
 
-function App() {
+export default function App() {
+  
+  return <Layout/>
+  
+}
+
+
+
+/* function App() {
   return 
 }
+ */
