@@ -26,7 +26,7 @@ export default function SimplePopper() {
   return (
     <div>
       <button aria-describedby={id} type="button" onClick={handleClick}>
-        RULES
+        
       </button>
       <Popper id={id} open={open} anchorEl={anchorEl}>
         <div className={classes.paper}>The content of the Popper. The content of the Popper. 
