@@ -12,8 +12,6 @@ export default function mainContent() {
         <Button style={buttons} variant="contained" color="secondary">Play</Button>
         <Button style={buttons} variant="contained" color="secondary">Shop</Button>
         <Button style={buttons} variant="contained" color="primary"><SimplePopper/>Rules</Button>
-      
-      
    
         </div>
     )

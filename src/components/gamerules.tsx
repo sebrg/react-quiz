@@ -25,12 +25,11 @@ export default function SimplePopper() {
 
   return (
     <div>
-      <button aria-describedby={id} type="button" onClick={handleClick}>
-        
-      </button>
+      <button aria-describedby={id} type="button" onClick={handleClick}></button>
       <Popper id={id} open={open} anchorEl={anchorEl}>
         <div className={classes.paper}>The content of the Popper. The content of the Popper. 
-        The conThe content of the Popper.The content of the Popper.The content of the Popper.tent of the Popper.</div>
+        The conThe content of the Popper.The content of the Popper.The content of the Popper.
+        The content of the Popper.</div>
       </Popper>
     </div>
   );
