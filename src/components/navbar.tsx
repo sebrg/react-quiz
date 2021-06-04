@@ -49,5 +49,5 @@ const centerText: CSSProperties = {
 }
 
 const color: CSSProperties = {
-  backgroundColor: "green"
+  backgroundColor: "green",
 }
