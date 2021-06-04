@@ -1,13 +1,15 @@
 import React, { CSSProperties } from 'react';
-import Header from './navbar'
-import MainContent from './MainView/mainView'
+import Header from './navbar';
+import MainContent from './MainView/mainView';
+
+
 
 
 export default function layout() {
     return (
         <div style={{...fullScreen, ...columnFlex, ...background}}>
             <Header/>
-            <MainContent/>
+            <MainContent/>    
             
         </div>
     )
