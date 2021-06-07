@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 import Popper from '@material-ui/core/Popper';
 
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     paper: {
@@ -24,8 +25,8 @@ export default function SimplePopper() {
   const id = open ? 'simple-popper' : undefined;
 
   return (
-    <div>
-      <button aria-describedby={id} type="button" onClick={handleClick}></button>
+    <div> 
+      <button aria-describedby={id} type="button" onClick={handleClick}>RULES</button>
       <Popper id={id} open={open} anchorEl={anchorEl}>
         <div className={classes.paper}>The content of the Popper. The content of the Popper. 
         The conThe content of the Popper.The content of the Popper.The content of the Popper.
