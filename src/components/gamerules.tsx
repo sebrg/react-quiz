@@ -31,6 +31,7 @@ export default function SimplePopper() {
         The conThe content of the Popper.The content of the Popper.The content of the Popper.
         The content of the Popper.</div>
       </Popper>
+ 
     </div>
   );
 }
