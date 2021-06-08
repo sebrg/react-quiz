@@ -1,23 +1,31 @@
 import React, { CSSProperties } from 'react'
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
 import Button from '@material-ui/core/Button';
-import SimplePopper from '../gamerules';
 
+export default function StartPage() {
 
-
-export default function mainContent() {
     return (
-        <div style={divstyle}> 
+        
+            <div style={divstyle}>
 
-        <Button style={buttons} variant="contained" color="secondary">Play</Button>
-        <Button style={buttons} variant="contained" color="secondary">Shop</Button>
-        <Button style={buttons} variant="contained" color="primary"><SimplePopper/>Rules</Button>
-      
-      
-   
-        </div>
+            <Button style={buttons} variant="contained" color="secondary"><Link to="/game">PLAY</Link></Button>
+            <Button style={buttons} variant="contained" color="secondary"><Link to="/shop">SHOP</Link></Button>
+            <Button style={buttons} variant="contained" color="primary"><Link to="/rules">RULES</Link></Button>
+
+            </div>
+
+
     )
 }
+
+
 
 const divstyle: CSSProperties = {
     width: '100%',
