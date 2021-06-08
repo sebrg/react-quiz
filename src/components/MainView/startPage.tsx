@@ -16,7 +16,7 @@ export default function StartPage() {
         
             <div style={divstyle}>
 
-            <Button style={buttons} variant="contained" color="secondary"><Link to="/game">PLAY</Link></Button>
+            <Button style={buttons} variant="contained" color="secondary"><Link to='./gamePage.tsx'>PLAY</Link></Button>
             <Button style={buttons} variant="contained" color="secondary"><Link to="/shop">SHOP</Link></Button>
             <Button style={buttons} variant="contained" color="primary"><Link to="/rules">RULES / </Link><SimplePopper/></Button>
 
