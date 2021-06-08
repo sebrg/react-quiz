@@ -1,6 +1,5 @@
 
 import Api from '../questionApi'
-import React from 'react';
 
 import { Category } from '@material-ui/icons';
 import React, { CSSProperties } from 'react';
@@ -13,9 +12,6 @@ import {
     Route,
     Link
 } from "react-router-dom";
-
-
-
 
 
 export default function GamePage() {
