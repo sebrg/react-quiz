@@ -1,32 +1,57 @@
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
 import React, { CSSProperties } from 'react';
-
 import Header from './navbar'
-import MainContent from './MainView/mainView';
 import Footer from './footer';
-
+import StartPage from "./MainView/startPage";
+import ShopPage from "./MainView/shopPage";
+import GamePage from "./MainView/gamePage";
 
 export default function layout() {
     return (
-        <div style={{...fullScreen, ...columnFlex, ...background}}>
-            <Header/>           
-            <MainContent/>
-            <Footer/>
+        <div style={{ ...fullScreen, ...columnFlex, ...background }}>
+            <Router>
+                <Header />
+                <Switch>
+                    <Route exact path="/">
+                        <StartPage />
+                    </Route>
+                    <Route exact path="/game">
+                        <GamePage />
+                    </Route>
+                    
+                    <Route path="/shop">
+                        <ShopPage />
+                    </Route>
 
+                        <Route path="/rules">
+                        <h1>rules</h1>
+                    </Route>
+                </Switch>
+
+                        <Footer />
+                        
+            </Router>
         </div>
     )
 }
 
 const columnFlex: CSSProperties = {
-    display: 'flex',
+                    display: 'flex',
     flexDirection: 'column',
 };
 
 const background: CSSProperties = {
-    background: '#1f1f1f'
+                    background: '#1f1f1f'
 }
 
 const fullScreen: CSSProperties = {
-    width: '100%',
+                    width: '100%',
     height: '100%',
     margin: '0'
 }

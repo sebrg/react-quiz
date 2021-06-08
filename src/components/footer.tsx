@@ -7,6 +7,13 @@ import StarIcon from '@material-ui/icons/Star';
 import HomeIcon from '@material-ui/icons/Home';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+
 const useStyles = makeStyles({
     root: {
         width: 500,
@@ -26,9 +33,28 @@ export default function SimpleBottomNavigation() {
             showLabels
             className={classes.root}
         >
-            <BottomNavigationAction label="High Score" icon={<StarIcon />} />
-            <BottomNavigationAction label="Home" icon={<HomeIcon />} />
-            <BottomNavigationAction label="Shop" icon={<ShoppingCartIcon />} />
+            <BottomNavigationAction //länk till scorePage i footern
+                component={Link} //component finnes i browserRouter längre upp
+                to="/signal" //val av url
+                label="High Score" //text till iconen
+                value="signal" //
+                icon={<StarIcon />} //namn på icon
+            />
+            <BottomNavigationAction //länkar till startsidan
+            component={Link}
+            to="/startPage"
+            label="Home"
+            value="signal"
+            icon={<HomeIcon />}
+            />
+
+            <BottomNavigationAction //länk till shopPage i footern
+             component={Link}
+             to="/shop"
+             label="Shop"
+             value="signal"
+             icon={<ShoppingCartIcon />}
+            />
         </BottomNavigation>
     );
 }
