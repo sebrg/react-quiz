@@ -1,3 +1,4 @@
+import Api from '../questionApi'
 import React from 'react';
 
 import {
@@ -7,14 +8,17 @@ import {
     Link
 } from "react-router-dom";
 
+
+interface Props {
+
+}
+ 
 export default function GamePage() {
-
     return (
-        
-            <div>
-            <h1>spelsida</h1>
-            </div>
-
-
+        <Api/>
     )
 }
+
+
+
+ 
