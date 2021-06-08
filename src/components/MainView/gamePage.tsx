@@ -1,5 +1,10 @@
+
+import Api from '../questionApi'
+import React from 'react';
+
 import { Category } from '@material-ui/icons';
 import React, { CSSProperties } from 'react';
+
 
 
 import {
@@ -8,6 +13,10 @@ import {
     Route,
     Link
 } from "react-router-dom";
+
+
+
+
 
 export default function GamePage() {
  
@@ -34,6 +43,7 @@ export default function GamePage() {
                 <div style={optionDivEx}>Option 4</div>
             </div>    
         </div>
+
     )
 }
 
@@ -43,6 +53,7 @@ const questionDiv : CSSProperties = {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
+
 
 }
 
@@ -62,3 +73,4 @@ const optionDivEx : CSSProperties = {
     alignItems: 'stretch',
     padding: '0 1em',
 }
+
