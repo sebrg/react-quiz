@@ -62,7 +62,7 @@ export default class GamePage extends React.Component<Props, State> {
                     
                     {questions.map(item => (  
                         <div>
-                        <li>
+                        <li key={item['question']}>
                             {item['question']}
                         </li>
 
