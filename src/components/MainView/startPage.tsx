@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react'
+import SimplePopper from '../gamerules'
 
 import {
     BrowserRouter as Router,
@@ -17,7 +18,7 @@ export default function StartPage() {
 
             <Button style={buttons} variant="contained" color="secondary"><Link to="/game">PLAY</Link></Button>
             <Button style={buttons} variant="contained" color="secondary"><Link to="/shop">SHOP</Link></Button>
-            <Button style={buttons} variant="contained" color="primary"><Link to="/rules">RULES</Link></Button>
+            <Button style={buttons} variant="contained" color="primary"><Link to="/rules">RULES / </Link><SimplePopper/></Button>
 
             </div>
 
