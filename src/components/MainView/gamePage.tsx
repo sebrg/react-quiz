@@ -16,34 +16,12 @@ import {
 
 export default function GamePage() {
  
-    
     return (
-        <div>
-            <div>
-                <div>
-                   <h2>Level</h2>
-                </div>
-                <div>
-                   <h2>Category</h2>
-                </div>
-            </div>
-            <div style={questionDiv}>
-                <h3>Question...</h3>
-            </div>
-            <div style={optionDiv}>
-                <div style={optionDivEx}>Option 1</div>
-                <div style={optionDivEx}>Option 2</div>
-            </div>
-            <div style={optionDiv}>
-                <div style={optionDivEx}>Option 3</div>
-                <div style={optionDivEx}>Option 4</div>
-            </div>    
-        </div>
-
+      <Api/>
     )
 }
 
-const questionDiv : CSSProperties = {
+/* const questionDiv : CSSProperties = {
     width: '100%',
     height: '20em',
     display: 'flex',
@@ -69,4 +47,4 @@ const optionDivEx : CSSProperties = {
     alignItems: 'stretch',
     padding: '0 1em',
 }
-
+ */

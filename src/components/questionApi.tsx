@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
+import Button from '@material-ui/core/Button';
 
 import {
     BrowserRouter as Router,
@@ -8,9 +9,10 @@ import {
 } from "react-router-dom";
 
 
-interface Props {
 
-}
+interface Props {}
+
+
 
 interface State {
     loading: boolean,
@@ -18,7 +20,7 @@ interface State {
     
 }
 
-export default class GamePage extends React.Component<Props, State> {
+export default class Api extends React.Component<Props, State> {
 
      constructor(state: State) {
         super(state)
@@ -26,11 +28,11 @@ export default class GamePage extends React.Component<Props, State> {
             loading: false,
             questions: []
         }
+        
     }
-
-   
+  
     componentDidMount() {
-        fetch('https://opentdb.com/api.php?amount=5&category=10&difficulty=medium&type=multiple')
+        fetch('https://opentdb.com/api.php?amount=1&category=10&difficulty=medium&type=multiple')
         .then(response =>  {
            const data = response.json()
            return data
@@ -44,9 +46,7 @@ export default class GamePage extends React.Component<Props, State> {
                 questions: data.results
             })
             console.log(this.state.questions)             
-        }) 
-        
-
+        })      
     }
     
     render() {
@@ -57,26 +57,73 @@ export default class GamePage extends React.Component<Props, State> {
           }
           else {
               return (
-                  <div>
+                <div style={color}>
+                {questions.map(item => (  
+                <div>
+                <div>
                     
-                    
-                    {questions.map(item => (  
-                        <div>
-                        <li key={item['question']}>
-                            {item['question']}
-                        </li>
+                 {/*    <div>
+                       <h2>Level</h2>
+                    </div>
+                    <div>
+                       <h2>Category</h2>
+                    </div> */}
+                </div>
+                <div key={item['question']} style={questionDiv}>
+                    <h2> {item['question']} </h2>
+                </div>
+                <div style={optionDiv}>
+                    <Button style={optionDivEx} variant="contained" color="primary"> {item['incorrect_answers'][0]} </Button>
+                    <Button style={optionDivEx} variant="contained" color="primary"> {item['incorrect_answers'][2]} </Button>
+                </div>
+                <div style={optionDiv}>
+                    <Button style={optionDivEx} variant="contained" color="primary"> {item['incorrect_answers'][1]} </Button>
+                    <Button style={optionDivEx} variant="contained" color="primary"> {item['correct_answer']} </Button>
 
-                            <button>
-                                {item['incorrect_answers']}
-                                {/* {item['correct_answer']} */}
-                            </button>
-                        </div>  
-                    ))}
+                </div>
+                </div>
+                ))}    
+            </div>
             
-                  </div>
-              )
+            )
+
+            
           }
         
     }
 
 }  
+
+const questionDiv : CSSProperties = {
+    width: '100%',
+    height: '20em',
+    display: 'flex',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+
+
+}
+
+const optionDiv : CSSProperties = {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'flex',
+    alignItems: 'center',
+    marginTop: '0.3em',
+
+}
+
+const optionDivEx : CSSProperties = {
+    width: '50%',
+    margin: '10px',
+    height: '4em',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '0em 1em',
+}
+
+const color : CSSProperties = {
+    color: 'white'
+}
+
