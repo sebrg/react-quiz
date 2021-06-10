@@ -11,12 +11,14 @@ import Footer from './footer';
 import StartPage from "./MainView/startPage";
 import ShopPage from "./MainView/shopPage";
 import GamePage from "./MainView/gamePage";
+import ErrorBoundary from './errorBoundary';
+
 
 export default function layout() {
     return (
         <div style={{ ...fullScreen, ...columnFlex, ...background }}>
             <Router>
-                <Header />
+            <ErrorBoundary>  <Header /> </ErrorBoundary>  
                 <Switch>
                     <Route exact path="/">
                         <StartPage />
@@ -26,14 +28,14 @@ export default function layout() {
                     </Route>
                     
                     <Route path="/shop">
-                        <ShopPage />
+                     <ShopPage />
                     </Route>
 
                         <Route path="/rules">
                         <h1>rules</h1>
                     </Route>
                 </Switch>
-
+                
                         <Footer />
                         
             </Router>

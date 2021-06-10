@@ -9,23 +9,34 @@ import {
 } from "react-router-dom";
 
 import Button from '@material-ui/core/Button';
+import ErrorBoundary from '../errorBoundary';
+import SimplePopper from '../gamerules'
+
+
+
 
 export default function StartPage() {
 
     return (
-        
-            <div style={divstyle}>
 
-            <Button style={buttons} variant="contained" color="secondary"><Link to='./game'>PLAY</Link></Button>
-            <Button style={buttons} variant="contained" color="secondary"><Link to="/shop">SHOP</Link></Button>
-            <Button style={buttons} variant="contained" color="primary"><Link to="/rules">RULES / </Link><SimplePopper/></Button>
+        <div style={divstyle}>
 
-            </div>
+            <Link style={linkButton} to="/game">
+                <Button style={buttons} variant="contained" color="secondary">P L A Y</Button>
+            </Link>
+
+            <Link style={linkButton} to="/shop">
+                <Button style={buttons} variant="contained" color="secondary">S H O P</Button>
+            </Link>
+
+            <Button style={buttonRule} variant="contained" color="primary">R U L E S<SimplePopper /></Button>
+
+        </div>
 
 
     )
-}
 
+}
 
 
 const divstyle: CSSProperties = {
@@ -42,5 +53,31 @@ const buttons: CSSProperties = {
     width: '80%',
     height: '10vh',
     margin: '2em',
-    fontFamily: 'verdana'
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontFamily: 'verdana',
+    fontSize: '17px'
 }
+
+const linkButton: CSSProperties = {
+    display: 'flex',
+    width: '80%',
+    height: '10vh',
+    margin: '2em',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontFamily: 'verdana',
+    textDecoration: 'none'
+}
+
+const buttonRule: CSSProperties = {
+    display: 'flex',
+    width: '63.6%',
+    height: '10vh',
+    margin: '2em',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontFamily: 'verdana',
+    fontSize: '17px'
+}
+ 

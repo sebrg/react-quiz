@@ -9,6 +9,8 @@ import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { CSSProperties } from '@material-ui/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import ErrorBoundary, { testErrorBoundary } from './errorBoundary';
+import CustomizedSwitches from './toggle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -24,21 +26,24 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
-
   return (
-    <div className={classes.root}>
-      <AppBar  style={color}  position="static">
-        <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography style={centerText} variant="h6" className={classes.title}>
-            React Quiz
+    
+      <div className={classes.root}>
+        <AppBar style={color} position="static">
+        <CustomizedSwitches />
+          <Toolbar>
+            <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+              <MenuIcon />
+            </IconButton>
+            <Typography style={centerText} variant="h6" className={classes.title}>
+              REACT QUIZ
           </Typography>
-          <Button color="inherit"><AccountCircleIcon/></Button>
-        </Toolbar>
-      </AppBar>
-    </div>
+            <Button color="inherit"><AccountCircleIcon /></Button>
+          </Toolbar>
+        </AppBar>
+      </div>
+     
+
   );
 }
 
