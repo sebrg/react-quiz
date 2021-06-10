@@ -1,6 +1,7 @@
 import React, { CSSProperties } from 'react';
 import Button from '@material-ui/core/Button';
 import Startpage from './MainView/startPage'
+import  { Redirect } from 'react-router-dom'
 
 import {
     BrowserRouter as Router,
@@ -8,6 +9,7 @@ import {
     Route,
     Link
 } from "react-router-dom";
+import { Color } from '@material-ui/core';
 
 interface Props {}
 
@@ -15,7 +17,7 @@ interface State {
     loading: boolean,
     questions: [],
     score: number,
-    question: number 
+    question: number,
 }
 
 export default class Api extends React.Component<Props, State> {
@@ -26,7 +28,7 @@ export default class Api extends React.Component<Props, State> {
             loading: false,
             questions: [],
             score: 0,
-            question: 1     
+            question: 1,
         } 
     }
   
@@ -47,6 +49,7 @@ export default class Api extends React.Component<Props, State> {
             console.log("correct answer")
             this.setState( {
                score: this.state.score + 1,
+                    
             }) 
             this.setState({
                 question: this.state.question < 5
@@ -58,25 +61,20 @@ export default class Api extends React.Component<Props, State> {
         else {
             console.log("wrong answer")
             this.setState({
-                question: this.state.question < 5
+                question: this.state.question < 6 //satte till 6 tills jag hittar lösning
                   ? this.state.question + 1
-                  : 5
+                  : 6
               });
             
         }
-
-        if(this.state.question == 5) {
-            console.log("hereawd", this.state.question)
-            this.endgame()
-        }
-        else {
-            this.componentDidMount()
-        }
-        
+     
+        this.componentDidMount()       
     }
 
     endgame = () => {
-      
+        return (
+            <Redirect to='/'/>
+        )
     }
     
     componentDidMount() {
@@ -101,11 +99,15 @@ export default class Api extends React.Component<Props, State> {
     
     render() {
 
-        if(this.state.question == 5) {
+        if(this.state.question >= 6) { // satte till 6 tills jag hittar lösning
             console.log("hereawd", this.state.question)
-            this.endgame()
+            return (
+                <Redirect to='/'/>
+            )
         }
-        
+
+        else {
+
         let myArray: any = []
             
         const {loading, questions} = this.state
@@ -124,7 +126,8 @@ export default class Api extends React.Component<Props, State> {
 
                 if(!loading) {
                 return <div>Loading...</div>
-            }
+                }
+
                 else {
                     return (
                         <div style={color}>
@@ -145,14 +148,11 @@ export default class Api extends React.Component<Props, State> {
                         </div>
                     </div>
                     
-                    )
-
-                    
-                }
-            
+                    )                  
+            }      
         }
-
     }  
+}
 
 const questionDiv : CSSProperties = {
     width: '100%',
