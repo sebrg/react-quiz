@@ -1,4 +1,5 @@
 import React, { CSSProperties } from 'react'
+import SimplePopper from '../gamerules'
 
 import {
     BrowserRouter as Router,

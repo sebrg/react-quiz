@@ -24,7 +24,7 @@ export default function layout() {
                         <StartPage />
                     </Route>
                     <Route exact path="/game">
-                        <GamePage />
+                        <GamePage/>
                     </Route>
                     
                     <Route path="/shop">
