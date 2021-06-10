@@ -35,9 +35,11 @@ export default class Api extends React.Component<Props, State> {
     handleClick = (value: string) => {
         const { questions } = this.state
         questions.map(item => (  
-                
-        this.checkifCorrect(value, item['correct_answer'])
-                 
+
+        setTimeout(() => {
+            this.checkifCorrect(value, item['correct_answer'])
+        }, 2000)  
+                    
         ))  
         console.log(value)
         console.log("here", questions)    
@@ -68,7 +70,7 @@ export default class Api extends React.Component<Props, State> {
             
         }
      
-        this.componentDidMount()       
+    this.componentDidMount()       
     }
 
     endgame = () => {
