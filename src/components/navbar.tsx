@@ -10,6 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import { CSSProperties } from '@material-ui/styles';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ErrorBoundary, { testErrorBoundary } from './errorBoundary';
+import CustomizedSwitches from './toggle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,12 +30,13 @@ export default function ButtonAppBar() {
     
       <div className={classes.root}>
         <AppBar style={color} position="static">
+        <CustomizedSwitches />
           <Toolbar>
             <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
               <MenuIcon />
             </IconButton>
             <Typography style={centerText} variant="h6" className={classes.title}>
-              React Quiz
+              REACT QUIZ
           </Typography>
             <Button color="inherit"><AccountCircleIcon /></Button>
           </Toolbar>
