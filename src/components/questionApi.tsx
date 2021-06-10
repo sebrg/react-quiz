@@ -1,5 +1,6 @@
 import React, { CSSProperties } from 'react';
 import Button from '@material-ui/core/Button';
+import Startpage from './MainView/startPage'
 
 import {
     BrowserRouter as Router,
@@ -8,16 +9,13 @@ import {
     Link
 } from "react-router-dom";
 
-
-
 interface Props {}
-
-
 
 interface State {
     loading: boolean,
-    questions: []
-    
+    questions: [],
+    score: number,
+    question: number 
 }
 
 export default class Api extends React.Component<Props, State> {
@@ -26,11 +24,61 @@ export default class Api extends React.Component<Props, State> {
         super(state)
         this.state = {
             loading: false,
-            questions: []
+            questions: [],
+            score: 0,
+            question: 1     
+        } 
+    }
+  
+    handleClick = (value: string) => {
+        const { questions } = this.state
+        questions.map(item => (  
+                
+        this.checkifCorrect(value, item['correct_answer'])
+                 
+        ))  
+        console.log(value)
+        console.log("here", questions)    
+          
+      }
+
+    checkifCorrect = (answer: string, correctAnswer: string) => {
+        if(answer === correctAnswer) {
+            console.log("correct answer")
+            this.setState( {
+               score: this.state.score + 1,
+            }) 
+            this.setState({
+                question: this.state.question < 5
+                  ? this.state.question + 1
+                  : 5
+              });
+            
+        }
+        else {
+            console.log("wrong answer")
+            this.setState({
+                question: this.state.question < 5
+                  ? this.state.question + 1
+                  : 5
+              });
+            
+        }
+
+        if(this.state.question == 5) {
+            console.log("hereawd", this.state.question)
+            this.endgame()
+        }
+        else {
+            this.componentDidMount()
         }
         
     }
-  
+
+    endgame = () => {
+      
+    }
+    
     componentDidMount() {
         fetch('https://opentdb.com/api.php?amount=1&category=10&difficulty=medium&type=multiple')
         .then(response =>  {
@@ -40,59 +88,71 @@ export default class Api extends React.Component<Props, State> {
         }) 
 
         .then(data =>  {
-            console.log(data.results)
+            /* console.log(data.results) */
             this.setState({
                 loading: true,
                 questions: data.results
             })
-            console.log(this.state.questions)             
-        })      
+            console.log("question", this.state.questions)  
+                      
+        })         
+        
     }
     
     render() {
+
+        if(this.state.question == 5) {
+            console.log("hereawd", this.state.question)
+            this.endgame()
+        }
         
-         const {loading, questions} = this.state  
-          if(!loading) {
-              return <div>Loading...</div>
-          }
-          else {
-              return (
-                <div style={color}>
-                {questions.map(item => (  
-                <div>
-                <div>
-                    
-                 {/*    <div>
-                       <h2>Level</h2>
+        let myArray: any = []
+            
+        const {loading, questions} = this.state
+        
+        questions.map(item => (    
+
+            myArray.push(item['incorrect_answers'][0],
+            item['incorrect_answers'][1], 
+            item['incorrect_answers'][2], 
+            item['correct_answer']) 
+
+            ))
+
+            myArray = myArray.sort(() => Math.random() - 0.5) //Shuffla index
+           
+
+                if(!loading) {
+                return <div>Loading...</div>
+            }
+                else {
+                    return (
+                        <div style={color}>
+                            <h1> Score : {this.state.score} Question: {this.state.question} / 5 </h1>
+                        {questions.map(item => (  
+                        <div key={item['question']} style={questionDiv}>
+                            <h2> {item['question']} </h2>
+                        </div>
+                        ))}
+                        <div>
+                        {myArray.map((element: any) => {
+                            
+                            return (
+                                <Button value={element} onClick={() => this.handleClick(element)} style={optionDiv} variant="contained" color="primary"> {element} </Button>
+                            ) 
+                            
+                        })}
+                        </div>
                     </div>
-                    <div>
-                       <h2>Category</h2>
-                    </div> */}
-                </div>
-                <div key={item['question']} style={questionDiv}>
-                    <h2> {item['question']} </h2>
-                </div>
-                <div style={optionDiv}>
-                    <Button style={optionDivEx} variant="contained" color="primary"> {item['incorrect_answers'][0]} </Button>
-                    <Button style={optionDivEx} variant="contained" color="primary"> {item['incorrect_answers'][2]} </Button>
-                </div>
-                <div style={optionDiv}>
-                    <Button style={optionDivEx} variant="contained" color="primary"> {item['incorrect_answers'][1]} </Button>
-                    <Button style={optionDivEx} variant="contained" color="primary"> {item['correct_answer']} </Button>
+                    
+                    )
 
-                </div>
-                </div>
-                ))}    
-            </div>
+                    
+                }
             
-            )
+        }
 
-            
-          }
-        
-    }
-
-}  
+    }  
 
 const questionDiv : CSSProperties = {
     width: '100%',
