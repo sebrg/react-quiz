@@ -11,49 +11,59 @@ import Footer from './footer';
 import StartPage from "./MainView/startPage";
 import ShopPage from "./MainView/shopPage";
 import GamePage from "./MainView/gamePage";
+import ScorePage from './MainView/scoreView'
 import ErrorBoundary from './errorBoundary';
+import { ThemedCSSProperties, ThemeContext } from './contexts/themeContext';
 
 
-export default function layout() {
+export default function layout() { 
     return (
-        <div style={{ ...fullScreen, ...columnFlex, ...background }}>
-            <Router>
-            <ErrorBoundary>  <Header /> </ErrorBoundary>  
-                <Switch>
-                    <Route exact path="/">
-                        <StartPage />
-                    </Route>
-                    <Route exact path="/game">
-                        <GamePage/>
-                    </Route>
-                    
-                    <Route path="/shop">
-                     <ShopPage />
-                    </Route>
 
-                        <Route path="/rules">
-                        <h1>rules</h1>
-                    </Route>
-                </Switch>
+        <ThemeContext.Consumer>
+            {({ theme }) => (
+
+                <div style={{ ...fullScreen, ...columnFlex, ...background(theme) }}>
+                    <Router>
+                        <ErrorBoundary>  <Header /> </ErrorBoundary>
+                        <Switch>
+                            <Route exact path="/">
+                                <StartPage />
+                            </Route>
+                            <Route exact path="/game">
+                                <GamePage />
+                            </Route>
+
+                            <Route path="/score">
+                                <ScorePage />
+                            </Route>
+
+                            <Route path="/rules">
+                                <h1>rules</h1>
+                            </Route>
                 
-                        <Footer />
+                </Switch>
+
+                    <Footer />
                         
             </Router>
         </div>
+        )}
+        </ThemeContext.Consumer>
     )
 }
 
 const columnFlex: CSSProperties = {
-                    display: 'flex',
+    display: 'flex',
     flexDirection: 'column',
 };
 
-const background: CSSProperties = {
-                    background: '#1f1f1f'
-}
+const background: ThemedCSSProperties = (theme) => ({
+    background: theme.background.secondary,
+    
+})
 
 const fullScreen: CSSProperties = {
-                    width: '100%',
+    width: '100%',
     height: '100%',
     margin: '0'
 }
