@@ -1,6 +1,5 @@
 import React, { CSSProperties } from 'react';
 import Button from '@material-ui/core/Button';
-import Startpage from './MainView/startPage'
 import  { Redirect } from 'react-router-dom'
 
 import {
@@ -18,6 +17,7 @@ interface State {
     questions: [],
     score: number,
     question: number,
+    disableBtn: boolean
 }
 
 export default class Api extends React.Component<Props, State> {
@@ -29,6 +29,7 @@ export default class Api extends React.Component<Props, State> {
             questions: [],
             score: 0,
             question: 1,
+            disableBtn: false
         } 
     }
   
@@ -38,9 +39,13 @@ export default class Api extends React.Component<Props, State> {
 
         setTimeout(() => {
             this.checkifCorrect(value, item['correct_answer'])
-        }, 2000)  
+        }, 1500)  
                     
-        ))  
+        ))
+        this.setState( {
+            disableBtn: true,           
+        })
+           
         console.log(value)
         console.log("here", questions)    
           
@@ -70,7 +75,13 @@ export default class Api extends React.Component<Props, State> {
             
         }
      
-    this.componentDidMount()       
+    this.componentDidMount()
+
+    setTimeout(() => {
+        this.setState( {
+            disableBtn: false,           
+         }) 
+    }, 500)     
     }
 
     endgame = () => {
@@ -125,7 +136,6 @@ export default class Api extends React.Component<Props, State> {
 
             myArray = myArray.sort(() => Math.random() - 0.5) //Shuffla index
            
-
                 if(!loading) {
                 return <div>Loading...</div>
                 }
@@ -143,7 +153,7 @@ export default class Api extends React.Component<Props, State> {
                         {myArray.map((element: any) => {
                             
                             return (
-                                <Button value={element} onClick={() => this.handleClick(element)} style={optionDiv} variant="contained" color="primary"> {element} </Button>
+                                <Button disabled={this.state.disableBtn} value={element} onClick={() => this.handleClick(element)} style={optionDiv} variant="contained" color="primary"> {element} </Button>
                             ) 
                             
                         })}
