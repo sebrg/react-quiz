@@ -1,5 +1,5 @@
 import React, { CSSProperties } from 'react'
-import SimplePopper from '../gamerules'
+
 
 import {
     BrowserRouter as Router,
@@ -19,17 +19,17 @@ export default function StartPage() {
 
     return (
 
-        <div style={divstyle}>
+        <div style={divstyleStart}>
 
             <Link style={linkButton} to="/game">
                 <Button style={buttons} variant="contained" color="secondary">P L A Y</Button>
             </Link>
 
-            <Link style={linkButton} to="/shop">
-                <Button style={buttons} variant="contained" color="secondary">S H O P</Button>
+            <Link style={linkButton} to="/score">
+                <Button style={buttons} variant="contained" color="secondary">H I G H  S C O R E</Button>
             </Link>
 
-            <Button style={buttonRule} variant="contained" color="primary">R U L E S<SimplePopper /></Button>
+            <Button style={buttonRule} variant="contained" color="primary">R U L E S<SimplePopper/></Button>
 
         </div>
 
@@ -39,11 +39,12 @@ export default function StartPage() {
 }
 
 
-const divstyle: CSSProperties = {
+const divstyleStart: CSSProperties = {
     width: '100%',
     height: '100%',
     display: 'flex',
     marginTop: '3em',
+    marginBottom: '5%',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'
@@ -55,7 +56,7 @@ const buttons: CSSProperties = {
     margin: '2em',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'verdana',
+    fontFamily: 'Bungee',
     fontSize: '17px'
 }
 
@@ -66,7 +67,7 @@ const linkButton: CSSProperties = {
     margin: '2em',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'verdana',
+    fontFamily: 'Bungee',
     textDecoration: 'none'
 }
 
@@ -77,7 +78,7 @@ const buttonRule: CSSProperties = {
     margin: '2em',
     justifyContent: 'center',
     alignItems: 'center',
-    fontFamily: 'verdana',
+    fontFamily: 'Bungee',
     fontSize: '17px'
 }
  
