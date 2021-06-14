@@ -12,6 +12,8 @@ import {
 
 interface Props {}
 
+
+
 interface State {
     loading: boolean,
     questions: [],
@@ -90,8 +92,8 @@ export default class Api extends React.Component<Props, State> {
         )
     }
     
-    componentDidMount() {
-        fetch('https://opentdb.com/api.php?amount=1&category=10&difficulty=medium&type=multiple')
+    async componentDidMount() {
+        await fetch('https://opentdb.com/api.php?amount=1&category=10&difficulty=medium&type=multiple')
         .then(response =>  {
             const data = response.json()
             return data
@@ -99,21 +101,31 @@ export default class Api extends React.Component<Props, State> {
         }) 
 
         .then(data =>  {
-            /* console.log(data.results) */
+            /* this.cleanText(data) */
             this.setState({
                 loading: true,
                 questions: data.results
             })
-            console.log("question", this.state.questions)  
-                      
+            console.log("question", this.state.questions)
+            /* console.log("data", data)  */ 
+            return data          
         })         
         
+    }
+
+    cleanText = (htmlOutput: string) => {     
+        return htmlOutput
+        .replace(/&#039;/g, '')
+        .replace(/&quot;/g, '')
+        .replace(/&amp;/g, '')
+        .replace(/&eacute;/g, 'é')
+        .replace(/&rsquo;/g, '')
     }
     
     render() {
 
         if(this.state.question >= 6) { // satte till 6 tills jag hittar lösning
-            console.log("hereawd", this.state.question)
+            console.log("ending game at 5 questions", this.state.question)
             return (
                 <Redirect to='/'/>
             )
@@ -147,7 +159,7 @@ export default class Api extends React.Component<Props, State> {
 
                     {questions.map(item => (  
                         <div key={item['question']} style={questionDiv}>
-                        <h2> {item['question']} </h2>
+                        <h2> {this.cleanText(item['question'])} </h2>
                         </div>
                     ))}
                         
@@ -155,7 +167,7 @@ export default class Api extends React.Component<Props, State> {
                         {myArray.map((element: any) => {
                             
                         return (
-                            <Button disabled={this.state.disableBtn} value={element} onClick={() => this.handleClick(element)} style={optionDiv} variant="contained" color="primary"> {element} </Button>
+                            <Button disabled={this.state.disableBtn} value={element} onClick={() => this.handleClick(element)} style={optionDiv} variant="contained" color="primary"> {this.cleanText(element)} </Button>
                         ) 
                             
                         })}
