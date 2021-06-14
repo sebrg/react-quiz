@@ -1,15 +1,11 @@
-import React, { CSSProperties } from 'react'
+import { CSSProperties } from 'react'
 
 
 import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
     Link
 } from "react-router-dom";
 
 import Button from '@material-ui/core/Button';
-import ErrorBoundary from '../errorBoundary';
 import SimplePopper from '../gamerules'
 
 
@@ -23,6 +19,9 @@ export default function StartPage() {
 
             <Link style={linkButton} to="/game">
                 <Button style={buttons} variant="contained" color="secondary">P L A Y</Button>
+            </Link>
+            <Link style={linkButton} to="/plan">
+                <Button style={buttons} variant="contained" color="secondary">G A M E P L A N</Button>
             </Link>
 
             <Link style={linkButton} to="/score">
