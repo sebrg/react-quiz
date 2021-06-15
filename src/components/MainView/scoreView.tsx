@@ -13,11 +13,13 @@ export default function ScorePage() {
     return (
 
         <div style={divstyleScore}>
-            <h1 style={scoreTitle}>HIGH SCORE</h1>
+            <div style={scoreStyle}>
+                <h1 style={scoreTitle}>HIGH SCORE</h1>
                 <div>1. NAMN</div>
                 <div>2. NAMN</div>
                 <div>3. NAMN</div>
                 <div>4. NAMN</div>
+            </div>
         </div>
 
 
@@ -37,5 +39,17 @@ const divstyleScore: React.CSSProperties = {
 
 const scoreTitle: React.CSSProperties = {
     fontFamily: 'Bungee',
+    marginTop: '0px',
 }
 
+const scoreStyle: React.CSSProperties = {
+    width: '375px',
+    borderRadius: '25px',
+    height: '100%',
+    display: 'flex',
+    backgroundColor: '#EAEAEA',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
+}
