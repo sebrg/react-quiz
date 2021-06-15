@@ -7,7 +7,7 @@ import React, { CSSProperties } from 'react';
 import Header from './navbar'
 import Footer from './footer';
 import StartPage from "./MainView/startPage";
-/*import ShopPage from "./MainView/shopPage";*/
+import SignIn from "./MainView/loginPage";
 import GamePage from "./MainView/gamePage";
 import GamePlanPage from "./MainView/gamePlanPage";
 import ScorePage from './MainView/scoreView'
@@ -36,6 +36,10 @@ export default function layout() {
 
                             <Route path="/score">
                                 <ScorePage />
+                            </Route>
+
+                            <Route path="/login">
+                                <SignIn /> 
                             </Route>
 
                             <Route path="/rules">
