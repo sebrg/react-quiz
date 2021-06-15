@@ -1,20 +1,14 @@
 
 import Api from '../questionApi'
-
-import { Category } from '@material-ui/icons';
-import React, { CSSProperties } from 'react';
+import {RouteComponentProps } from 'react-router-dom'
 
 
 
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
 
 
-export default function GamePage() {
+
+export default function GamePage(props: RouteComponentProps) {
+    console.log(props.match.params)
  
     return (
       <Api/>

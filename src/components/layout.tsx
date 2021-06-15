@@ -1,9 +1,7 @@
 import {
     BrowserRouter as Router,
     Switch,
-    Route,
-    Link
-} from "react-router-dom";
+    Route} from "react-router-dom";
 
 import React, { CSSProperties } from 'react';
 import Header from './navbar'
@@ -11,6 +9,7 @@ import Footer from './footer';
 import StartPage from "./MainView/startPage";
 import SignIn from "./MainView/loginPage";
 import GamePage from "./MainView/gamePage";
+import GamePlanPage from "./MainView/gamePlanPage";
 import ScorePage from './MainView/scoreView'
 import ErrorBoundary from './errorBoundary';
 import { ThemedCSSProperties, ThemeContext } from './contexts/themeContext';
@@ -29,8 +28,10 @@ export default function layout() {
                             <Route exact path="/">
                                 <StartPage />
                             </Route>
-                            <Route exact path="/game">
-                                <GamePage />
+                            <Route exact path="/game/:questionNo" component={GamePage}/>
+                        
+                            <Route exact path="/plan">
+                                <GamePlanPage/>
                             </Route>
 
                             <Route path="/score">
