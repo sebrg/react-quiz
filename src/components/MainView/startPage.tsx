@@ -29,11 +29,11 @@ export default function StartPage() {
                 ) : undefined
             }
 
-            <Link style={linkButton} to="/game">
+            {/* <Link style={linkButton} to="/game">
                 <Button style={buttons} variant="contained" color="secondary">P L A Y</Button>
-            </Link>
+            </Link> */}
             <Link style={linkButton} to="/plan">
-                <Button style={buttons} variant="contained" color="secondary">G A M E P L A N</Button>
+                <Button style={buttons} variant="contained" color="secondary">P L A Y  G A M E</Button>
             </Link>
 
             <Link style={linkButton} to="/score">
