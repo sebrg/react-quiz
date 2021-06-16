@@ -1,5 +1,4 @@
-import { CSSProperties } from 'react'
-
+import { CSSProperties, useState } from 'react';
 import {
     BrowserRouter as Router,
     Switch,
@@ -8,14 +7,14 @@ import {
 } from "react-router-dom";
 
 import Button from '@material-ui/core/Button';
-import SimplePopper from '../gamerules'
-
-/*import GamePlan from '../gamePlan'*/
-
-
-
+import Modal from "../modal";
+import GameRulesTest from './gameRulesTest'
+ 
 
 export default function StartPage() {
+     
+    const [isModalOpen, setIsModalOpen] = useState(false)
+
 
     return (
         
@@ -23,6 +22,12 @@ export default function StartPage() {
         
 
         <div style={divstyleStart}>
+
+            {
+                isModalOpen ? ( 
+                    <Modal shouldClose={() => {}}><GameRulesTest /><button onClick={() => setIsModalOpen(false)}>Close</button></Modal> 
+                ) : undefined
+            }
 
             <Link style={linkButton} to="/game">
                 <Button style={buttons} variant="contained" color="secondary">P L A Y</Button>
@@ -34,14 +39,14 @@ export default function StartPage() {
             <Link style={linkButton} to="/score">
                 <Button style={buttons} variant="contained" color="secondary">H I G H  S C O R E</Button>
             </Link>
-
-            <Button style={buttonRule} variant="contained" color="primary">R U L E S<SimplePopper/></Button>
+            
+            <Button onClick={() => setIsModalOpen(true)} style={buttonRule} variant="contained" color="primary">RULES</Button>
 
         </div>
 
-
+ 
     )
-
+ 
 }
 
 
@@ -78,8 +83,7 @@ const linkButton: CSSProperties = {
 }
 
 const buttonRule: CSSProperties = {
-    display: 'flex',
-    width: '63.6%',
+    width: '64%',
     height: '10vh',
     margin: '2em',
     justifyContent: 'center',
@@ -87,4 +91,5 @@ const buttonRule: CSSProperties = {
     fontFamily: 'Bungee',
     fontSize: '17px'
 }
+ 
  
