@@ -17,6 +17,9 @@ export default function StartPage() {
 
 
     return (
+        
+        /*<GamePlan />*/
+        
 
         <div style={divstyleStart}>
 
