@@ -49,7 +49,7 @@ export default function SimpleBottomNavigation() {
 
                     <BottomNavigationAction //länkar till startsidan
                         component={Link}
-                        to="/startPage"
+                        to="/"
                         /* label="Home" */
                         value="signal"
                         icon={<HomeIcon htmlColor={theme.foreground.primary} />}
@@ -57,7 +57,7 @@ export default function SimpleBottomNavigation() {
 
                     <BottomNavigationAction //länk till shopPage i footern
                         component={Link}
-                        to="/shop"
+                        to="/login"
                         /* label="Shop" */
                         value="signal"
                         icon={<ShoppingCartIcon htmlColor={theme.foreground.primary} />}

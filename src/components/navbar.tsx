@@ -38,7 +38,10 @@ export default function ButtonAppBar() {
               <Typography style={centerText} variant="h6" className={classes.title}>
                 <Font />
               </Typography>
-              <Button color="inherit"><AccountCircleIcon /></Button>
+              <Button color="inherit">
+                
+                
+                <AccountCircleIcon /></Button>
             </Toolbar>
           </AppBar>
         </div>
