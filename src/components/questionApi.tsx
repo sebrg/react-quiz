@@ -126,8 +126,10 @@ export default class Api extends React.Component<Props, State> {
 
         if(this.state.question >= 6) { // satte till 6 tills jag hittar lösning
             console.log("ending game at 5 questions", this.state.question)
-            return (
-                <Redirect to='/'/>
+            return ( 
+                <div>
+                    <Redirect to='/'/>
+                </div>
             )
         }
 
@@ -186,6 +188,7 @@ const questionDiv : CSSProperties = {
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
+   
 }
 
 const optionDiv : CSSProperties = {

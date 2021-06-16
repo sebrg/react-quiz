@@ -1,6 +1,7 @@
 
 import Api from '../questionApi'
 import {RouteComponentProps } from 'react-router-dom'
+import { CSSProperties } from '@material-ui/core/styles/withStyles'
 
 
 
@@ -11,9 +12,13 @@ export default function GamePage(props: RouteComponentProps) {
     console.log(props.match.params)
  
     return (
-      <Api/>
+        
+            <Api/>
+     
     )
 }
+
+
 
 /* const questionDiv : CSSProperties = {
     width: '100%',
