@@ -10,12 +10,17 @@ import {
 import Button from '@material-ui/core/Button';
 import SimplePopper from '../gamerules'
 
+/*import GamePlan from '../gamePlan'*/
+
 
 
 
 export default function StartPage() {
 
     return (
+        
+        /*<GamePlan />*/
+        
 
         <div style={divstyleStart}>
 

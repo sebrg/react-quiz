@@ -19,7 +19,7 @@ interface State {
 
 
 
-export default class GamePlan extends React.Component <Props, State> {
+export default class GamePlanTest extends React.Component <Props, State> {
 
     constructor (state: State) {
         super(state);

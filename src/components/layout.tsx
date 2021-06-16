@@ -8,8 +8,9 @@ import Header from './navbar'
 import Footer from './footer';
 import StartPage from "./MainView/startPage";
 import SignIn from "./MainView/loginPage";
+/*import ShopPage from "./MainView/shopPage";*/
+import GamePlan from "./gamePlan";
 import GamePage from "./MainView/gamePage";
-import GamePlanPage from "./MainView/gamePlanPage";
 import ScorePage from './MainView/scoreView'
 import ErrorBoundary from './errorBoundary';
 import { ThemedCSSProperties, ThemeContext } from './contexts/themeContext';
@@ -31,7 +32,7 @@ export default function layout() {
                             <Route exact path="/game/:questionNo" component={GamePage}/>
                         
                             <Route exact path="/plan">
-                                <GamePlanPage/>
+                                <GamePlan/>
                             </Route>
 
                             <Route path="/score">
