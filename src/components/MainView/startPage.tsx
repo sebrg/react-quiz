@@ -8,7 +8,8 @@ import {
 
 import Button from '@material-ui/core/Button';
 import Modal from "../modal";
-import GameRulesTest from './gameRulesTest'
+import GameRulesTest from './gameRulesTest';
+import User from './loginPage';
 
 
 export default function StartPage() {
@@ -17,6 +18,8 @@ export default function StartPage() {
 
 
     return (
+
+
 
         /*<GamePlan />*/
 
@@ -36,6 +39,7 @@ export default function StartPage() {
             </Link> */}
             <Link style={linkButton} to="/plan">
                 <Button style={buttons} variant="contained" color="secondary">PLAY GAME</Button>
+             
             </Link>
 
             <Link style={linkButton} to="/score">
