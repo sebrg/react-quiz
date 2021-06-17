@@ -1,4 +1,4 @@
-import { PinDropSharp } from '@material-ui/icons';
+
 import React, { CSSProperties } from 'react';
 import { 
     BrowserRouter as Router,
@@ -11,10 +11,10 @@ import User from './MainView/loginPage'
 
 //Props skickar vidare
 interface Props {
-    //levels: [],
+   // levels: string[],
 }
 
-interface State {
+export interface State {
     levels: string [],
 }
 
@@ -39,17 +39,16 @@ export default class GamePlan extends React.Component <Props, State> {
             {level: '10'},
         ]; */
         
-        const levelsArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
+        let levelsArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
-        this.state={
+     this.state={
          
             levels: levelsArray
         };
         
-       
-
+        
  
-        console.log(this.state.levels);
+        /* console.log(this.state.levels); */
 
     }
    
@@ -58,6 +57,7 @@ export default class GamePlan extends React.Component <Props, State> {
         const{levels}=this.state 
 
         return(
+
             <div>
                 
                 <div><User/></div>
@@ -72,6 +72,7 @@ export default class GamePlan extends React.Component <Props, State> {
 
                     )};
                 </div>
+
             </div>
             
         );

@@ -14,6 +14,7 @@ import GamePage from "./MainView/gamePage";
 import ScorePage from './MainView/scoreView'
 import ErrorBoundary from './errorBoundary';
 import { ThemedCSSProperties, ThemeContext } from './contexts/themeContext';
+import Api from "./questionApi";
 
 
 export default function layout() { 

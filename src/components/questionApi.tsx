@@ -2,6 +2,8 @@ import React, { CSSProperties } from 'react';
 import Button from '@material-ui/core/Button';
 import  { Redirect } from 'react-router-dom'
 
+
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -10,31 +12,36 @@ import {
 } from "react-router-dom";
 
 
-interface Props {}
 
 
+interface Props {
+    url: string
+}
 
 interface State {
     loading: boolean,
     questions: [],
     score: number,
     question: number,
-    disableBtn: boolean
+    category: string
+    disableBtn: boolean,
 }
 
 export default class Api extends React.Component<Props, State> {
 
-    constructor(state: State) {
-        super(state)
+    constructor(state: State, props: Props) {
+        super(props)
         this.state = {
             loading: false,
             questions: [],
             score: 0,
             question: 1,
-            disableBtn: false
-        } 
+            category: 'GetFromApi',
+            disableBtn: false,
+        }    
     }
-  
+    
+
     handleClick = (value: string) => {
         const { questions } = this.state
         questions.map(item => (  
@@ -52,6 +59,8 @@ export default class Api extends React.Component<Props, State> {
         console.log("here", questions)    
           
     }
+
+    
 
     checkifCorrect = (answer: string, correctAnswer: string) => {
         if(answer === correctAnswer) {
@@ -85,32 +94,23 @@ export default class Api extends React.Component<Props, State> {
          }) 
     }, 500)     
     }
-
-    endgame = () => {
-        return (
-            <Redirect to='/'/>
-        )
-    }
-    
+  
     async componentDidMount() {
-        await fetch('https://opentdb.com/api.php?amount=1&category=10&difficulty=medium&type=multiple')
+        const url = this.props.url
+        await fetch(url)
         .then(response =>  {
             const data = response.json()
-            return data
-           
+            return data  
         }) 
 
         .then(data =>  {
-            /* this.cleanText(data) */
             this.setState({
                 loading: true,
-                questions: data.results
+                questions: data.results,
+                category: data.results[0].category
             })
-            console.log("question", this.state.questions)
-            /* console.log("data", data)  */ 
-            return data          
-        })         
-        
+            console.log("question", this.state.questions) 
+        })             
     }
 
     cleanText = (htmlOutput: string) => {     
@@ -121,15 +121,14 @@ export default class Api extends React.Component<Props, State> {
         .replace(/&eacute;/g, 'é')
         .replace(/&rsquo;/g, '')
     }
+
     
     render() {
 
         if(this.state.question >= 6) { // satte till 6 tills jag hittar lösning
-            console.log("ending game at 5 questions", this.state.question)
-            return ( 
-                <div>
-                    <Redirect to='/'/>
-                </div>
+            console.log("ending game at 5 questions", this.state.question)  
+            return (  
+                <Redirect to='/plan'/>         
             )
         }
 
@@ -138,6 +137,7 @@ export default class Api extends React.Component<Props, State> {
         let myArray: any = []
             
         const {loading, questions} = this.state
+        
         
         questions.map(item => (    
             
@@ -156,15 +156,18 @@ export default class Api extends React.Component<Props, State> {
 
             else {
                 return (
-                    <div style={color}>
-                    <h1> Score : {this.state.score} Question: {this.state.question} / 5 </h1>
+                    <div style={{...color, ...MainDiv}}>
+                    <div style={questionDiv}>
+                    <h2 >Question: {this.state.question} / 5 </h2>
+                    <h2  style={scoreColor}>Score : { this.state.score}</h2>
+                    <h2 >Category: {this.state.category} </h2>
 
                     {questions.map(item => (  
-                        <div key={item['question']} style={questionDiv}>
-                        <h2> {this.cleanText(item['question'])} </h2>
+                        <div key={item['question']}>
+                        <h2 style={rmargin}> {this.cleanText(item['question'])} </h2>
                         </div>
                     ))}
-                        
+                       
                     <div>
                         {myArray.map((element: any) => {
                             
@@ -173,6 +176,7 @@ export default class Api extends React.Component<Props, State> {
                         ) 
                             
                         })}
+                        </div> 
                         </div>
                     </div>
                     
@@ -182,24 +186,42 @@ export default class Api extends React.Component<Props, State> {
     }  
 }
 
+const MainDiv : CSSProperties = {
+    display: 'flex',
+    width: '100%',
+    height: '85vh',
+}
+
 const questionDiv : CSSProperties = {
     width: '100%',
-    height: '20em',
+    height: '100%',
     display: 'flex',
-    justifyContent: 'space-around',
+    flexDirection: 'column',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
    
 }
 
 const optionDiv : CSSProperties = {
-    width: '100%',
+    width: '75vw',
     display: 'flex',
     justifyContent: 'flex',
     alignItems: 'center',
     marginTop: '0.3em',
+    marginBottom: '0.3em',
+    margin: '0.5em'
 }
 
 const color : CSSProperties = {
-    color: 'white'
+    color: 'white',
+    textAlign: 'center'
+}
+
+const rmargin: CSSProperties = {
+    margin: '0',
+}
+
+const scoreColor: CSSProperties = {
+    color: 'green'
 }
 

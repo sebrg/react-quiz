@@ -17,11 +17,8 @@ export default function StartPage() {
 
 
     return (
-        
-        /*<GamePlan />*/
-        
-
-        <div style={divstyleStart}>
+           
+    <div style={divstyleStart}>
 
             {
                 isModalOpen ? ( 
@@ -44,7 +41,7 @@ export default function StartPage() {
 
         </div>
 
- 
+
     )
  
 }
