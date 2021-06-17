@@ -44,7 +44,6 @@ const scoreTitle: React.CSSProperties = {
 
 const scoreStyle: React.CSSProperties = {
     width: '375px',
-    borderRadius: '25px',
     height: '100%',
     display: 'flex',
     backgroundColor: '#EAEAEA',

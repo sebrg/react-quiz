@@ -59,8 +59,6 @@ export default class GamePlan extends React.Component <Props, State> {
         return(
 
             <div>
-                
-                <div><User/></div>
                 <h3 style={h3Div}>Choose level...</h3>
                 <div style={divPlan}>
                     {levels.map((level) =>
