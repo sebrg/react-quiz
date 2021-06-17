@@ -199,7 +199,7 @@ const questionDiv : CSSProperties = {
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-   
+    fontFamily: 'sans-serif', 
 }
 
 const optionDiv : CSSProperties = {
