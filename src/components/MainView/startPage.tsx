@@ -18,11 +18,8 @@ import SimplePopper from '../gamerules'
 export default function StartPage() {
 
     return (
-        
-        /*<GamePlan />*/
-        
-
-        <div style={divstyleStart}>
+           
+    <div style={divstyleStart}>
 
             <Link style={linkButton} to="/game">
                 <Button style={buttons} variant="contained" color="secondary">P L A Y</Button>
@@ -38,7 +35,6 @@ export default function StartPage() {
             <Button style={buttonRule} variant="contained" color="primary">R U L E S<SimplePopper/></Button>
 
         </div>
-
 
     )
 
