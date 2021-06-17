@@ -8,6 +8,10 @@ interface Props {
     shouldClose: () => void;
 }
 
+interface State {
+    isOpen: boolean
+}
+
 export default class Modal extends Component<Props> {
     
     element: HTMLDivElement 
@@ -17,6 +21,7 @@ export default class Modal extends Component<Props> {
         super(props);
         this.element = document.createElement('div');
         this.element.id = 'modal-root';
+        this.state={isOpen: false}
     }
 
     onclick = () => {
@@ -28,19 +33,28 @@ export default class Modal extends Component<Props> {
     // open the modal
     componentDidMount() {
         document.body.appendChild(this.element);
+        document.body.style.overflow = 'hidden'
     }
 
     // close the modal
     componentWillUnmount() {
         document.body.removeChild(this.element);
+        document.body.style.overflow = 'unset'
     }
 
     render() {
         return ReactDOM.createPortal(
-            <div onClick={this.onclick}>
+            <div style={styleModal} onClick={this.onclick}>
                 {this.props.children}
             </div>,
             this.element,
         );
     }
+} 
+
+const styleModal: React.CSSProperties = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh'
 }

@@ -199,6 +199,7 @@ const questionDiv : CSSProperties = {
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+   
 }
 
 const optionDiv : CSSProperties = {

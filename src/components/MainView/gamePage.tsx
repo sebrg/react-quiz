@@ -1,6 +1,7 @@
 
 import Api from '../questionApi'
 import {RouteComponentProps } from 'react-router-dom'
+import { CSSProperties } from '@material-ui/core/styles/withStyles'
 
 
 
@@ -59,5 +60,6 @@ export default function GamePage(props: Props) {
       <Api url={url} />
     )
 }
+
 
 
