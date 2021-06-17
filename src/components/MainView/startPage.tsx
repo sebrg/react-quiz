@@ -9,23 +9,25 @@ import {
 import Button from '@material-ui/core/Button';
 import Modal from "../modal";
 import GameRulesTest from './gameRulesTest'
- 
+
 
 export default function StartPage() {
-     
+
     const [isModalOpen, setIsModalOpen] = useState(false)
 
 
     return (
-        
+
         /*<GamePlan />*/
-        
+
 
         <div style={divstyleStart}>
 
             {
-                isModalOpen ? ( 
-                    <Modal shouldClose={() => {}}><GameRulesTest /><button onClick={() => setIsModalOpen(false)}>Close</button></Modal> 
+                isModalOpen ? (
+                    <Modal shouldClose={() => { }}><GameRulesTest />
+                        <Button style={closeBtn} onClick={() => setIsModalOpen(false)} variant="contained" color="primary" href="#contained-buttons">Close</Button>
+                    </Modal>
                 ) : undefined
             }
 
@@ -33,20 +35,20 @@ export default function StartPage() {
                 <Button style={buttons} variant="contained" color="secondary">P L A Y</Button>
             </Link> */}
             <Link style={linkButton} to="/plan">
-                <Button style={buttons} variant="contained" color="secondary">P L A Y  G A M E</Button>
+                <Button style={buttons} variant="contained" color="secondary">PLAY GAME</Button>
             </Link>
 
             <Link style={linkButton} to="/score">
-                <Button style={buttons} variant="contained" color="secondary">H I G H  S C O R E</Button>
+                <Button style={buttons} variant="contained" color="secondary">HIGHSCORE</Button>
             </Link>
-            
+
             <Button onClick={() => setIsModalOpen(true)} style={buttonRule} variant="contained" color="primary">RULES</Button>
 
         </div>
 
- 
+
     )
- 
+
 }
 
 
@@ -68,7 +70,8 @@ const buttons: CSSProperties = {
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily: 'Bungee',
-    fontSize: '17px'
+    fontSize: '17px',
+    backgroundColor: '#1a237e'
 }
 
 const linkButton: CSSProperties = {
@@ -89,7 +92,12 @@ const buttonRule: CSSProperties = {
     justifyContent: 'center',
     alignItems: 'center',
     fontFamily: 'Bungee',
-    fontSize: '17px'
+    fontSize: '17px',
+    backgroundColor: '#3f51b5'
 }
- 
- 
+
+const closeBtn: CSSProperties = {
+    fontFamily: 'Bungee',
+    fontSize: '10px',
+    backgroundColor: '#3f51b5',
+}

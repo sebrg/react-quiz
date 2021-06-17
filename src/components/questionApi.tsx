@@ -128,7 +128,7 @@ export default class Api extends React.Component<Props, State> {
             console.log("ending game at 5 questions", this.state.question)
             return ( 
                 <div>
-                    <Redirect to='/'/>
+                    <Redirect to='/plan'/>
                 </div>
             )
         }
@@ -184,11 +184,11 @@ export default class Api extends React.Component<Props, State> {
 
 const questionDiv : CSSProperties = {
     width: '100%',
-    height: '20em',
+    height: '13em',
     display: 'flex',
     justifyContent: 'space-around',
     alignItems: 'center',
-   
+    fontFamily: 'sans-serif', 
 }
 
 const optionDiv : CSSProperties = {
@@ -197,6 +197,7 @@ const optionDiv : CSSProperties = {
     justifyContent: 'flex',
     alignItems: 'center',
     marginTop: '0.3em',
+    fontFamily: 'sans-serif'
 }
 
 const color : CSSProperties = {

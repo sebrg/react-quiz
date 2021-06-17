@@ -6,7 +6,7 @@ const FontLink = () => {
     return(
         <div className="card">
             <span className="font-link">
-                REACT QUIZ
+                <h3>REACT QUIZ</h3>
             </span>
         </div>
     )
