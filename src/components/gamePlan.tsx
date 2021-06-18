@@ -75,8 +75,9 @@ export default class GamePlan extends React.Component <Props, State> {
 
                           <div style={divWhite}>
                           <Link to={`/game/${level}`} style={divBlack}>{level}</Link>
+                          </div>
 
-                          )};
+                        )};
                       </div>
 
                   </div>
