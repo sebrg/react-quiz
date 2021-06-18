@@ -54,26 +54,36 @@ export default class GamePlan extends React.Component <Props, State> {
    
       
     render() {
-        const{levels}=this.state 
 
-        return(
-
-            <div>
-                <h3 style={h3Div}>Choose level...</h3>
-                <div style={divPlan}>
-                    {levels.map((level) =>
-                        
-                        <div style={divWhite}>
-                        <Link to={`/game/${level}`} style={divBlack}>{level}</Link>
-                            
-                        </div>
-
-                    )};
-                </div>
-
-            </div>
+        const{levels}=this.state   
+        let storedUser = localStorage.getItem('user')
+        console.log(storedUser)
+        
+        if(storedUser == null || storedUser == 'null') {
+            return (
+                <div><User/></div>
+            )
+        }
+        else {
             
-        );
+          return(
+
+              <div>
+                  <h3 style={h3Div}>Choose level...</h3>
+                  <div style={divPlan}>
+                      {levels.map((level) =>
+
+                          <div style={divWhite}>
+                          <Link to={`/game/${level}`} style={divBlack}>{level}</Link>
+
+                          )};
+                      </div>
+
+                  </div>
+
+              );
+        }
+
     }
     
 }
