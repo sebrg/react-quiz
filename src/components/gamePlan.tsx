@@ -68,16 +68,16 @@ export default class GamePlan extends React.Component <Props, State> {
             
           return(
 
-              <div>
+                <div style={{ ...fullScreen, ...columnFlex, ...centerStyle }}>
                   <h3 style={h3Div}>Choose level...</h3>
                   <div style={divPlan}>
                       {levels.map((level) =>
 
                           <div style={divWhite}>
-                          <Link to={`/game/${level}`} style={divBlack}>{level}</Link>
+                          <Link to={`/game/${level}`}  style={{...divBlack, ...btnHover}}>{level}</Link>
                           </div>
 
-                        )};
+                    )};
                       </div>
 
                   </div>
@@ -89,6 +89,29 @@ export default class GamePlan extends React.Component <Props, State> {
     
 }
 
+const columnFlex: CSSProperties = { 
+
+    display: 'flex', 
+
+    flexDirection: 'column', 
+
+}; 
+
+ 
+ const fullScreen: CSSProperties = { 
+    width: '100%', 
+    height: '100%', 
+    margin: '0' 
+
+}  
+
+const centerStyle: CSSProperties = { 
+    display: 'flex', 
+    alignItems: 'center' 
+
+} 
+
+
 
 const h3Div: CSSProperties = {
     color: 'white',
@@ -97,33 +120,36 @@ const h3Div: CSSProperties = {
 
 
 const divPlan: CSSProperties  = {
-    width: '90%',
-    height: '100%',
-    marginTop: '1em',
-    marginLeft: '3%',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-
-    
-    
+    width: '22em', 
+    height: '30em', 
+    marginTop: '1em', 
+    margin: 0, 
+    display: 'flex', 
+    flexWrap: 'wrap', 
+    justifyContent: 'center', 
+    alignItems: 'center',  
 }
+
 const divBlack: CSSProperties = {
-    width: '40%',
-    height: 'auto',
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'black',
-    color: 'white',
-    fontSize: '1.5em',
-    textDecoration: 'none',
-    padding: '15%',
-    marginTop: '1%',
-    marginBottom: '1%',
+    width: '2em', 
+    height: 'auto', 
+    display: 'flex', 
+    flexWrap: 'wrap', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    backgroundColor: '#1a237e', 
+    color: 'white', 
+    fontSize: '1.5em', 
+    textDecoration: 'none', 
+    padding: '15%', 
+    marginTop: '1%', 
+    marginBottom: '1%', 
+    borderRadius: '55%', 
    
+}
+
+const btnHover: CSSProperties = {
+    cursor: 'pointer',
 }
 
 const divWhite: CSSProperties = {
@@ -133,7 +159,7 @@ const divWhite: CSSProperties = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+   //backgroundColor: 'white',
     color: 'black',
 }
 

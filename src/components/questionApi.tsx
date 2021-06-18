@@ -160,7 +160,9 @@ export default class Api extends React.Component<Props, State> {
                     <div style={questionDiv}>
                     <h2 >Question: {this.state.question} / 5 </h2>
                     <h2  style={scoreColor}>Score : { this.state.score}</h2>
-                    <h2 >Category: {this.state.category} </h2>
+                    <div style={category}>
+                        <h2 >Category: {this.state.category} </h2>
+                    </div>
 
                     {questions.map(item => (  
                         <div key={item['question']}>
@@ -189,7 +191,7 @@ export default class Api extends React.Component<Props, State> {
 const MainDiv : CSSProperties = {
     display: 'flex',
     width: '100%',
-    height: '85vh',
+    height: '35em',
 }
 
 const questionDiv : CSSProperties = {
@@ -207,8 +209,8 @@ const optionDiv : CSSProperties = {
     display: 'flex',
     justifyContent: 'flex',
     alignItems: 'center',
-    marginTop: '0.3em',
-    marginBottom: '0.3em',
+    marginTop: '0.2em',
+    marginBottom: '0.2em',
     margin: '0.5em'
 }
 
@@ -219,9 +221,25 @@ const color : CSSProperties = {
 
 const rmargin: CSSProperties = {
     margin: '0',
+    color: 'white',
+    fontSize: '1.4em',
+    display: 'flex',
+    alignItems: 'center',
+    padding: '0.8em',
 }
 
 const scoreColor: CSSProperties = {
-    color: 'green'
+    color: 'green',
+}
+
+const category: CSSProperties = {
+    width: '80%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: '1em',
+    backgroundColor: 'white',
+    color: '#3f51b5',
+    fontSize: '0.8em',
 }
 
