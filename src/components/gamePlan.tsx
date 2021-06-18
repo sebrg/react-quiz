@@ -55,9 +55,10 @@ export default class GamePlan extends React.Component <Props, State> {
       
     render() {
 
-        const{levels}=this.state   
-        let storedUser = localStorage.getItem('user')
-        console.log(storedUser)
+        const{levels}=this.state  
+        let storedUser:any = localStorage.getItem('user')
+        let parsedObject = JSON.parse(storedUser)
+        console.log(parsedObject.user)
         
         if(storedUser == null || storedUser == 'null') {
             return (
@@ -69,6 +70,10 @@ export default class GamePlan extends React.Component <Props, State> {
           return(
 
                 <div style={{ ...fullScreen, ...columnFlex, ...centerStyle }}>
+                    <div style={anotherDiv}>
+                    <h4 /* style={h3Div} */> user: {parsedObject.user} </h4>
+                    <h5 /* style={h3Div} */> score: {parsedObject.score} </h5>
+                    </div>
                   <h3 style={h3Div}>Choose level...</h3>
                   <div style={divPlan}>
                       {levels.map((level) =>
@@ -115,7 +120,13 @@ const centerStyle: CSSProperties = {
 
 const h3Div: CSSProperties = {
     color: 'white',
-    marginTop: '1em',
+    marginTop: '0em',
+}
+
+const anotherDiv: CSSProperties = {
+    color: 'white',
+    marginTop: '-1em',
+   
 }
 
 
