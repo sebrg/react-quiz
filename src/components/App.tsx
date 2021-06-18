@@ -2,12 +2,16 @@ import React from 'react';
 /* import Button from '@material-ui/core/Button'; */
 import Layout from './layout'
 import ThemeProvider from '../components/contexts/themeProvider';
+import ErrorBoundary from './errorBoundary';
 
-export default function App() { 
+export default function App() {
   return (
-    <ThemeProvider>
-      <Layout />
-    </ThemeProvider>)
+    <ErrorBoundary>
+      <ThemeProvider>
+        <Layout />
+      </ThemeProvider>
+    </ErrorBoundary>
+  )
 }
 
 
