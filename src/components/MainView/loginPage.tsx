@@ -13,8 +13,8 @@ export default class User extends React.Component {
  
   
     State = {
-        user: '',
-        score: '',
+        'user': String,
+        'score': Number,
     }
     
     
