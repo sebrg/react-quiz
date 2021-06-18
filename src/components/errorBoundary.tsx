@@ -32,7 +32,7 @@ export default class ErrorBoundary extends Component<Props, State> {
     }
 }
 
-export function testErrorBoundary() {
+export function testErrorBoundary() { //testar errorB
     const nullVariable: any = null;
     console.log(nullVariable.testarError)
 } 
