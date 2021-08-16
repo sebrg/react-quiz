@@ -1,5 +1,6 @@
 
 import React, { CSSProperties } from 'react';
+import { ThemedCSSProperties, ThemeContext } from './contexts/themeContext';
 import { 
     BrowserRouter as Router,
     Switch,
@@ -51,12 +52,14 @@ export default class GamePlan extends React.Component <Props, State> {
             
           return(
 
-                <div style={{ ...fullScreen, ...columnFlex, ...centerStyle }}>
+            <ThemeContext.Consumer> 
+            {({ theme }) => (
+                <div style={{...fullScreen, ...columnFlex, ...centerStyle }}>
                     <div style={anotherDiv}>
-                    <h4 /* style={h3Div} */> user: {parsedObject.username} </h4>
-                    <h5 /* style={h3Div} */> score: {parsedObject.score} </h5>
+                    <h4 style={background(theme)}/* style={h3Div} */> user: {parsedObject.username} </h4>
+                    <h5 style={background(theme)}> score: {parsedObject.score} </h5>
                     </div>
-                  <h3 style={h3Div}>Choose level...</h3>
+                  <h3 style={background(theme)}>Choose level...</h3>
                   <div style={divPlan}>
                       {levels.map((level) =>
 
@@ -65,9 +68,12 @@ export default class GamePlan extends React.Component <Props, State> {
                           </div>
 
                     )};
-                      </div>
+                      </div> 
 
                   </div>
+
+                )}
+                </ThemeContext.Consumer>
 
               );
         }
@@ -97,13 +103,6 @@ const centerStyle: CSSProperties = {
     alignItems: 'center' 
 
 } 
-
-
-
-const h3Div: CSSProperties = {
-    color: 'white',
-    marginTop: '0em',
-}
 
 const anotherDiv: CSSProperties = {
     color: 'white',
@@ -161,3 +160,8 @@ const divSpace: CSSProperties = {
     height: '4em',
     backgroundColor: 'White',
 }
+
+const background: ThemedCSSProperties = (theme) => ({
+    color: theme.foreground.primary,
+    
+})
