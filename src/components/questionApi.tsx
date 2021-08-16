@@ -123,12 +123,40 @@ export default class Api extends React.Component<Props, State> {
     }
 
     
+    countScore = () => { //börjar om vid ny level
+        let x: any  = localStorage.getItem('user')
+        let parsedObject = JSON.parse(x)
+        parsedObject.score = this.state.score
+        console.log(parsedObject.score)
+        let currentUser = {
+            'username': parsedObject.username,
+            'score': parsedObject.score
+
+        }
+        localStorage.setItem('currentUser', JSON.stringify(currentUser))
+
+    }
+
+
     render() {
+
+        this.countScore()
 
         if(this.state.question >= 6) { // satte till 6 tills jag hittar lösning
             console.log("ending game at 5 questions", this.state.question)  
-            return (  
+            let x: any  = localStorage.getItem('user')
+            let y: any  = localStorage.getItem('currentUser')
+            let parsedObject = JSON.parse(x)
+            let parsedObject2 = JSON.parse(y)  
+            let user = {
+                'username': parsedObject.username,
+                'score': parsedObject2.score + parsedObject.score
+    
+            }
+            localStorage.setItem('user', JSON.stringify(user))
+            return (
                 <Redirect to='/plan'/>         
+                
             )
         }
 
@@ -149,9 +177,9 @@ export default class Api extends React.Component<Props, State> {
             ))
             myArray = myArray.sort(() => Math.random() - 0.5) //Shuffla index
             
-           
+
             if(!loading) {
-                return <div>Loading...</div>
+                return <div style={color}>Loading...</div>
             }
 
             else {
@@ -159,7 +187,7 @@ export default class Api extends React.Component<Props, State> {
                     <div style={{...color, ...MainDiv}}>
                     <div style={questionDiv}>
                     <h2 >Question: {this.state.question} / 5 </h2>
-                    <h2  style={scoreColor}>Score : { this.state.score}</h2>
+                    <h2  style={scoreColor}>Score : {this.state.score}</h2>
                     <div style={category}>
                         <h2 >Category: {this.state.category} </h2>
                     </div>
