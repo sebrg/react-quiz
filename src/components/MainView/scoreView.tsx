@@ -8,14 +8,18 @@ import {
 } from "react-router-dom";
 
 
+
 export default function ScorePage() {
+    
+    let storedUser:any = localStorage.getItem('user')
+    let parsedObject = JSON.parse(storedUser)  
 
     return (
 
         <div style={divstyleScore}>
             <div style={scoreStyle}>
                 <h1 style={scoreTitle}>HIGH SCORE</h1>
-                <div>1. NAMN</div>
+                <div>1. {parsedObject.username} , score: {parsedObject.score} </div>
                 <div>2. NAMN</div>
                 <div>3. NAMN</div>
                 <div>4. NAMN</div>
