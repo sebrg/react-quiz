@@ -13,7 +13,7 @@ export default class User extends React.Component {
  
   
     State = {
-        'user': String,
+        'username': String,
         'score': Number,
     }
     
@@ -23,8 +23,8 @@ export default class User extends React.Component {
         const value = input.value
         
         this.setState({
-            user: value,
-            score: 'empty'
+            username: value,
+            score: 0
         })
         console.log(this.state)
     }

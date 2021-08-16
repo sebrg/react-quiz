@@ -25,30 +25,13 @@ export default class GamePlan extends React.Component <Props, State> {
     constructor (state: State) {
         super(state);
         
-
-       /*  const levelsArray = [
-            {level: '1'},
-            {level: '2'},
-            {level: '3'},
-            {level: '4'},
-            {level: '5'},
-            {level: '6'},
-            {level: '7'},
-            {level: '8'},
-            {level: '9'},
-            {level: '10'},
-        ]; */
         
         let levelsArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
      this.state={
          
             levels: levelsArray
-        };
-        
-        
- 
-        /* console.log(this.state.levels); */
+        };      
 
     }
    
@@ -58,7 +41,6 @@ export default class GamePlan extends React.Component <Props, State> {
         const{levels}=this.state  
         let storedUser:any = localStorage.getItem('user')
         let parsedObject = JSON.parse(storedUser)
-        console.log(parsedObject.user)
         
         if(storedUser == null || storedUser == 'null') {
             return (
@@ -71,7 +53,7 @@ export default class GamePlan extends React.Component <Props, State> {
 
                 <div style={{ ...fullScreen, ...columnFlex, ...centerStyle }}>
                     <div style={anotherDiv}>
-                    <h4 /* style={h3Div} */> user: {parsedObject.user} </h4>
+                    <h4 /* style={h3Div} */> user: {parsedObject.username} </h4>
                     <h5 /* style={h3Div} */> score: {parsedObject.score} </h5>
                     </div>
                   <h3 style={h3Div}>Choose level...</h3>
