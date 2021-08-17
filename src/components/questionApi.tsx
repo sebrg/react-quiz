@@ -207,7 +207,7 @@ export default class Api extends React.Component<Props, State> {
                         return (
                             <Button disabled={this.state.disableBtn} value={element} onClick={() => this.handleClick(element)} style={optionDiv} variant="contained" color="primary"> {this.cleanText(element)} </Button>
                         ) 
-                            
+                             
                         })}
                         </div> 
                         </div>
@@ -225,7 +225,9 @@ export default class Api extends React.Component<Props, State> {
 const MainDiv : CSSProperties = {
     display: 'flex',
     width: '100%',
-    height: '100%', 
+    height: '100%',
+    marginBottom: '1em',
+    objectFit: 'cover' 
 }
 
 const questionDiv : CSSProperties = {
@@ -236,7 +238,8 @@ const questionDiv : CSSProperties = {
     justifyContent: 'space-evenly',
     alignItems: 'center',
     fontFamily: 'sans-serif',
-    marginTop: '0.4em',
+    
+    
 }
 
 const optionDiv : CSSProperties = {
