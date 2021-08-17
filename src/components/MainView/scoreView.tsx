@@ -11,18 +11,21 @@ import {
 
 export default function ScorePage() {
     
-    let storedUser:any = localStorage.getItem('user')
-    let parsedObject = JSON.parse(storedUser)  
+    let storedUser:any = localStorage.getItem('user') //hämtat från localstorage
+    let parsedObject = JSON.parse(storedUser) //hämtat från localstorage
+
+    const highscoreArray = [parsedObject];
+
+    const highscoreArrayMap = highscoreArray.map((parsedObject) => (<li> {parsedObject.username} {parsedObject.score} p</li>));
+
 
     return (
 
         <div style={divstyleScore}>
             <div style={scoreStyle}>
                 <h1 style={scoreTitle}>HIGH SCORE</h1>
-                <div>1. {parsedObject.username} , score: {parsedObject.score} </div>
-                <div>2. NAMN</div>
-                <div>3. NAMN</div>
-                <div>4. NAMN</div>
+                <div><ul>{highscoreArrayMap}</ul>  </div>
+    
             </div>
         </div>
 
