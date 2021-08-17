@@ -93,9 +93,8 @@ const columnFlex: CSSProperties = {
  
  const fullScreen: CSSProperties = { 
     width: '100%', 
-    height: '100%', 
-    margin: '0' 
-
+    maxHeight: '110%', 
+    margin: '0'
 }  
 
 const centerStyle: CSSProperties = { 
@@ -107,7 +106,6 @@ const centerStyle: CSSProperties = {
 const anotherDiv: CSSProperties = {
     color: 'white',
     marginTop: '-1em',
-   
 }
 
 

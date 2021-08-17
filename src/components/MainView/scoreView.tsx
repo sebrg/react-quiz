@@ -15,8 +15,16 @@ export default function ScorePage() {
     let parsedObject = JSON.parse(storedUser) //hämtat från localstorage
 
     const highscoreArray = [parsedObject];
+    console.log(highscoreArray)
 
-    const highscoreArrayMap = highscoreArray.map((parsedObject) => (<li> {parsedObject.username} {parsedObject.score} p</li>));
+    let highscorelist = []
+    
+    highscorelist.push(highscoreArray)
+    console.log(highscorelist)
+
+    localStorage.setItem('highscore', JSON.stringify(highscorelist))
+
+    highscorelist = highscoreArray.map((highscore) => (<li> {highscore.username} {highscore.score}p</li>));
 
 
     return (
@@ -24,7 +32,7 @@ export default function ScorePage() {
         <div style={divstyleScore}>
             <div style={scoreStyle}>
                 <h1 style={scoreTitle}>HIGH SCORE</h1>
-                <div><ul>{highscoreArrayMap}</ul>  </div>
+                <div>{highscorelist}</div>
     
             </div>
         </div>
