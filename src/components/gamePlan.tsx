@@ -68,13 +68,9 @@ export default class GamePlan extends React.Component <Props, State> {
 }
 
     handleClick = () => { 
-        let storedList: any = localStorage.getItem('highscore')
-        let parsedList = JSON.parse(storedList)
         localStorage.removeItem('levels')
         let storedUser:any = localStorage.getItem('user')
-        let parsedObject = JSON.parse(storedUser)
-        /* parsedList.push(parsedObject)
-        localStorage.setItem('highscore', JSON.stringify(parsedList));  */
+        let parsedObject = JSON.parse(storedUser)      
         this.saveData(parsedObject)
         parsedObject.score = 0
         localStorage.setItem('user', JSON.stringify(parsedObject))
