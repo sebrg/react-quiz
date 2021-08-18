@@ -40,7 +40,7 @@ export default class GamePlan extends React.Component <Props, State> {
     
     let storedLevel: any = localStorage.getItem('levels')
     let parseMe = JSON.parse(storedLevel)
-    console.log(parseMe) 
+    /* console.log(parseMe) */ 
     if(!parseMe == null) {
 
         for (let i = 0; i < parseMe.length; i++) {
@@ -61,12 +61,42 @@ export default class GamePlan extends React.Component <Props, State> {
             })
         
         }          
-        console.log(levels)
-        console.log(this.state.levels, 'in state')
+       /*  console.log(levels)
+        console.log(this.state.levels, 'in state') */
         
     }
 }
 
+    handleClick = () => { 
+        localStorage.removeItem('levels')
+        let storedUser:any = localStorage.getItem('user')
+        let parsedObject = JSON.parse(storedUser)      
+        this.saveData(parsedObject)
+        parsedObject.score = 0
+        localStorage.setItem('user', JSON.stringify(parsedObject))
+        window.location.reload()
+    }
+
+     saveData = (data: object) => {
+        let storedA: any = localStorage.getItem('highscore')
+        if(storedA == null || storedA == 'null') {
+            let a: any = [];
+            a.push(data);
+            localStorage.setItem('highscore', JSON.stringify(a));
+        }
+
+        else {
+
+            let a = [];
+    
+            let storedArr: any = localStorage.getItem('highscore')
+            a = JSON.parse(storedArr)
+         
+            a.push(data);
+            localStorage.setItem('highscore', JSON.stringify(a));
+        }
+        
+    }
    
       
 render() {
@@ -85,7 +115,7 @@ render() {
     if(storedLevel && parseMe.length >= 10) {
         return (
             <div style={{ ...fullScreen, ...columnFlex, ...centerStyle }}>
-                <Button variant="contained" color="primary">Play again & submit score</Button>
+                <Button onClick={() => this.handleClick()} variant="contained" color="primary">Play again & submit score</Button>
             </div>
         )
     }

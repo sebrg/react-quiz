@@ -22,7 +22,7 @@ export default function ScorePage() {
     highscorelist.push(highscoreArray)
     console.log(highscorelist)
 
-    localStorage.setItem('highscore', JSON.stringify(highscorelist))
+    /* localStorage.setItem('highscore', JSON.stringify(highscorelist)) */
 
     highscorelist = highscoreArray.map((highscore) => (<li> {highscore.username} {highscore.score}p</li>));
 
