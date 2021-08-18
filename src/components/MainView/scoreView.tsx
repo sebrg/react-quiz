@@ -28,10 +28,8 @@ export default function ScorePage() {
 
 const divstyleScore: React.CSSProperties = {
     width: '100%',
-    height: '100%',
+    height: '80vh',
     display: 'flex',
-    marginTop: '1em',
-    marginBottom: '25%',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'

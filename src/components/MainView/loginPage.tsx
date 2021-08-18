@@ -52,11 +52,10 @@ export default class User extends React.Component {
 
 
 const divstyleLogin: React.CSSProperties = {
-    width: '90%',
+    width: '100%',
     height: '100%',
     display: 'flex',
     marginTop: '1em',
-    marginLeft: '1em',
     marginBottom: '5%',
     flexDirection: 'row',
     justifyContent: 'center',

@@ -1,4 +1,5 @@
 
+import { exit } from 'process';
 import React, { CSSProperties } from 'react';
 import { 
     BrowserRouter as Router,
@@ -15,7 +16,8 @@ interface Props {
 }
 
 export interface State {
-    levels: string [],
+    levels: number [],
+    disableBtn: boolean
 }
 
 
@@ -26,27 +28,73 @@ export default class GamePlan extends React.Component <Props, State> {
         super(state);
         
         
-        let levelsArray = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
-
-     this.state={
-         
-            levels: levelsArray
+        let levelsArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        
+        this.state={        
+            levels: levelsArray,
+            disableBtn: false,
         };      
-
+       
     }
+    
+    removeDoneLvls = (value: number) => { 
+    
+    let storedLevel: any = localStorage.getItem('levels')
+    let parseMe = JSON.parse(storedLevel)
+    console.log(parseMe) 
+    if(!parseMe == null) {
+
+        for (let i = 0; i < parseMe.length; i++) {
+            console.log(parseMe[i])
+            
+        }
+    }    
+    const{levels}=this.state
+ 
+    for( var i = 0; i < levels.length; i++){ 
+        
+        if (levels[i] == value) { 
+    
+            levels.splice(i, 1); 
+                 
+            this.setState({
+                levels: levels
+            })
+        
+        }          
+        console.log(levels)
+        console.log(this.state.levels, 'in state')
+        
+    }
+}
+
    
       
-    render() {
-
-        const{levels}=this.state  
+render() {
+    let storedLevel: any = localStorage.getItem('levels')
+    let parseMe = JSON.parse(storedLevel)
+    /* if(!storedLevel == null) { */
+        
+        for (let i = 0; i < parseMe.length; i++) {
+            const element = parseMe[i];
+            
+            this.removeDoneLvls(element)
+        }
+        console.log(parseMe) 
+    /* } */
+    
+    const{levels}=this.state      
+        /* console.log(levels, '70')  */ 
         let storedUser:any = localStorage.getItem('user')
         let parsedObject = JSON.parse(storedUser)
-        
-        if(storedUser == null || storedUser == 'null') {
-            return (
-                <div><User/></div>
-            )
-        }
+                        
+            if(storedUser == null || storedUser == 'null') {
+                return (
+                    <div><User/></div>
+                    )
+                }
+                
+
         else {
             
           return(
@@ -58,10 +106,10 @@ export default class GamePlan extends React.Component <Props, State> {
                     </div>
                   <h3 style={h3Div}>Choose level...</h3>
                   <div style={divPlan}>
+                      
                       {levels.map((level) =>
-
                           <div style={divWhite}>
-                          <Link to={`/game/${level}`}  style={{...divBlack, ...btnHover}}>{level}</Link>
+                          <Link onClick={() => this.removeDoneLvls(level)} to={`/game/${level}`} /* style={{...divBlack, ...btnHover}} */> <button value={level} disabled={this.state.disableBtn} style={{...divBlack, ...btnHover}}>  {level} </button></Link>
                           </div>
 
                     )};

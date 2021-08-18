@@ -2,6 +2,9 @@ body {
     background-color: #1f1f1f;
 }
 
+* {
+  box-sizing: border-box;
+}
 
  .font-link {
     font-size: 20px;
