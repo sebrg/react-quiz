@@ -1,6 +1,7 @@
 
 import Button from '@material-ui/core/Button';
 import React, { CSSProperties } from 'react';
+import { ThemedCSSProperties, ThemeContext } from './contexts/themeContext';
 import { 
     BrowserRouter as Router,
     Switch,
@@ -105,12 +106,14 @@ render() {
             
           return(
 
-                <div style={{ ...fullScreen, ...columnFlex, ...centerStyle }}>
+            <ThemeContext.Consumer> 
+            {({ theme }) => (
+                <div style={{...fullScreen, ...columnFlex, ...centerStyle }}>
                     <div style={anotherDiv}>
-                    <h4 /* style={h3Div} */> user: {parsedObject.username} </h4>
-                    <h5 /* style={h3Div} */> score: {parsedObject.score} </h5>
+                    <h4 style={background(theme)}/* style={h3Div} */> user: {parsedObject.username} </h4>
+                    <h5 style={background(theme)}> score: {parsedObject.score} </h5>
                     </div>
-                  <h3 style={h3Div}>Choose level...</h3>
+                  <h3 style={background(theme)}>Choose level...</h3>
                   <div style={divPlan}>
                       
                       {levels.map((level) =>
@@ -119,9 +122,12 @@ render() {
                           </div>
 
                     )};
-                      </div>
+                      </div> 
 
                   </div>
+
+                )}
+                </ThemeContext.Consumer>
 
               );
         }
@@ -141,9 +147,8 @@ const columnFlex: CSSProperties = {
  
  const fullScreen: CSSProperties = { 
     width: '100%', 
-    height: '100%', 
-    margin: '0' 
-
+    maxHeight: '110%', 
+    margin: '0'
 }  
 
 const centerStyle: CSSProperties = { 
@@ -152,17 +157,9 @@ const centerStyle: CSSProperties = {
 
 } 
 
-
-
-const h3Div: CSSProperties = {
-    color: 'white',
-    marginTop: '0em',
-}
-
 const anotherDiv: CSSProperties = {
     color: 'white',
     marginTop: '-1em',
-   
 }
 
 
@@ -215,3 +212,8 @@ const divSpace: CSSProperties = {
     height: '4em',
     backgroundColor: 'White',
 }
+
+const background: ThemedCSSProperties = (theme) => ({
+    color: theme.foreground.primary,
+    
+})
