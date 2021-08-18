@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react';
 import Button from '@material-ui/core/Button';
 import  { Redirect } from 'react-router-dom'
-
+import { ThemedCSSProperties, ThemeContext } from './contexts/themeContext';
 
 
 import {
@@ -181,17 +181,20 @@ export default class Api extends React.Component<Props, State> {
 
             else {
                 return (
-                    <div style={{...color, ...MainDiv}}>
+
+                    <ThemeContext.Consumer> 
+                         {({ theme }) => (
+                    <div style={{ ...color, ...MainDiv}}>
                     <div style={questionDiv}>
-                    <h2 >Question: {this.state.question} / 5 </h2>
+                    <h2 style={background(theme)}>Question: {this.state.question} / 5 </h2>
                     <h2  style={scoreColor}>Score : {this.state.score}</h2>
                     <div style={category}>
                         <h2 >Category: {this.state.category} </h2>
                     </div>
 
                     {questions.map(item => (  
-                        <div key={item['question']}>
-                        <h2 style={rmargin}> {this.cleanText(item['question'])} </h2>
+                        <div style={queSize}key={item['question']}>
+                        <h2 style={background(theme)}> {this.cleanText(item['question'])} </h2>
                         </div>
                     ))}
                        
@@ -201,11 +204,14 @@ export default class Api extends React.Component<Props, State> {
                         return (
                             <Button disabled={this.state.disableBtn} value={element} onClick={() => this.handleClick(element)} style={optionDiv} variant="contained" color="primary"> {this.cleanText(element)} </Button>
                         ) 
-                            
+                             
                         })}
                         </div> 
                         </div>
                     </div>
+
+                    )}
+                    </ThemeContext.Consumer>
                     
                 )                  
             }      
@@ -217,6 +223,7 @@ const MainDiv : CSSProperties = {
     display: 'flex',
     width: '100%',
     height: '85vh',
+
 }
 
 const questionDiv : CSSProperties = {
@@ -226,7 +233,9 @@ const questionDiv : CSSProperties = {
     flexDirection: 'column',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    fontFamily: 'sans-serif', 
+    fontFamily: 'sans-serif',
+    
+    
 }
 
 const optionDiv : CSSProperties = {
@@ -242,7 +251,7 @@ const optionDiv : CSSProperties = {
 const color : CSSProperties = {
     color: 'white',
     textAlign: 'center'
-}
+} 
 
 const rmargin: CSSProperties = {
     margin: '0',
@@ -255,6 +264,7 @@ const rmargin: CSSProperties = {
 
 const scoreColor: CSSProperties = {
     color: 'green',
+    marginTop: '-0.5em', 
 }
 
 const category: CSSProperties = {
@@ -266,5 +276,18 @@ const category: CSSProperties = {
     backgroundColor: 'white',
     color: '#3f51b5',
     fontSize: '0.8em',
+    marginTop: '1.9em', 
 }
 
+const queSize: CSSProperties = {
+    maxWidth: '80%',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    fontSize: '0.8em',
+}
+
+const background: ThemedCSSProperties = (theme) => ({
+    color: theme.foreground.primary,
+    
+})

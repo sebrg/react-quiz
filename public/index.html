@@ -18,8 +18,15 @@
     inset: 0;
     background: rgba(0, 0, 0, 0.6);
     z-index: 1;
-
   }
+
+  @media only screen and (max-width:400px) {
+    .sm-hidden {
+        min-height: 100%; 
+        object-fit: cover;
+        margin-bottom: 0;
+    }
+}
 </style>
     <!--
       manifest.json provides metadata used when your web app is installed on a

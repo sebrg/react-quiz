@@ -8,17 +8,32 @@ import {
 } from "react-router-dom";
 
 
+
 export default function ScorePage() {
+    
+    let storedUser:any = localStorage.getItem('user') //hämtat från localstorage
+    let parsedObject = JSON.parse(storedUser) //hämtat från localstorage
+
+    const highscoreArray = [parsedObject];
+    console.log(highscoreArray)
+
+    let highscorelist = []
+    
+    highscorelist.push(highscoreArray)
+    console.log(highscorelist)
+
+    localStorage.setItem('highscore', JSON.stringify(highscorelist))
+
+    highscorelist = highscoreArray.map((highscore) => (<li> {highscore.username} {highscore.score}p</li>));
+
 
     return (
 
         <div style={divstyleScore}>
             <div style={scoreStyle}>
                 <h1 style={scoreTitle}>HIGH SCORE</h1>
-                <div>1. NAMN</div>
-                <div>2. NAMN</div>
-                <div>3. NAMN</div>
-                <div>4. NAMN</div>
+                <div>{highscorelist}</div>
+    
             </div>
         </div>
 

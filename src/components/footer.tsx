@@ -54,14 +54,6 @@ export default function SimpleBottomNavigation() {
                         value="signal"
                         icon={<HomeIcon htmlColor={theme.foreground.primary} />}
                     />
-
-                    <BottomNavigationAction //länk till shopPage i footern
-                        component={Link}
-                        to="/login"
-                        /* label="Shop" */
-                        value="signal"
-                        icon={<ShoppingCartIcon htmlColor={theme.foreground.primary} />}
-                    />
                 </BottomNavigation>
                 </div>
             )}
@@ -74,7 +66,7 @@ const background: ThemedCSSProperties = (theme) => ({
     background: theme.background.secondary,
     width: '100%',
     display: 'flex',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     position: 'fixed',
     left: '0',
     bottom: '0',
