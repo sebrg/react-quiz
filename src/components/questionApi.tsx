@@ -55,12 +55,10 @@ export default class Api extends React.Component<Props, State> {
         disableBtn: true,           
         })
            
-        console.log(value)
-        console.log("here", questions)    
+        /* console.log(value)
+        console.log("here", questions)  */   
           
     }
-
-    
 
     checkifCorrect = (answer: string, correctAnswer: string) => {
         if(answer === correctAnswer) {
@@ -123,11 +121,10 @@ export default class Api extends React.Component<Props, State> {
     }
 
     
-    countScore = () => { //börjar om vid ny level
+    countScore = () => { 
         let x: any  = localStorage.getItem('user')
         let parsedObject = JSON.parse(x)
         parsedObject.score = this.state.score
-        console.log(parsedObject.score)
         let currentUser = {
             'username': parsedObject.username,
             'score': parsedObject.score
@@ -143,7 +140,7 @@ export default class Api extends React.Component<Props, State> {
         this.countScore()
 
         if(this.state.question >= 6) { // satte till 6 tills jag hittar lösning
-            console.log("ending game at 5 questions", this.state.question)  
+            /* console.log("ending game at 5 questions", this.state.question) */  
             let x: any  = localStorage.getItem('user')
             let y: any  = localStorage.getItem('currentUser')
             let parsedObject = JSON.parse(x)
@@ -154,9 +151,9 @@ export default class Api extends React.Component<Props, State> {
     
             }
             localStorage.setItem('user', JSON.stringify(user))
-            return (
-                <Redirect to='/plan'/>         
-                
+            
+            return (         
+                 <Redirect to='/plan'/>                        
             )
         }
 
@@ -225,9 +222,8 @@ export default class Api extends React.Component<Props, State> {
 const MainDiv : CSSProperties = {
     display: 'flex',
     width: '100%',
-    height: '100%',
-    marginBottom: '1em',
-    objectFit: 'cover' 
+    height: '85vh',
+
 }
 
 const questionDiv : CSSProperties = {

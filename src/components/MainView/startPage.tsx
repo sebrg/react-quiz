@@ -58,10 +58,10 @@ export default function StartPage() {
 
 const divstyleStart: CSSProperties = {
     width: '100%',
-    height: '100%',
+    height: '85vh',
     display: 'flex',
     marginTop: '3em',
-    marginBottom: '5%',
+    margin: '0',
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center'

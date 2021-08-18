@@ -12,8 +12,33 @@ export interface Props {
 
 export default function GamePage(props: Props) {
     /* console.log(props.match.params) */
+        
+    function saveData(data: number) {
+        let storedA: any = localStorage.getItem('levels')
+        if(storedA == null || storedA == 'null') {
+            let a: any = [];
+            a.push(data);
+            localStorage.setItem('levels', JSON.stringify(a));
+        }
+
+        else {
+
+            let a = [];
+    
+            let storedArr: any = localStorage.getItem('levels')
+            a = JSON.parse(storedArr)
+         
+            a.push(data);
+            localStorage.setItem('levels', JSON.stringify(a));
+        }
+        
+    }
+
 
     let url: string = 'null'
+    
+    saveData(props.match.params.questionNo)
+    /* localStorage.setItem('levels', props.match.params.questionNo) */
 
     if (props.match.params.questionNo === '1') {
         url = 'https://opentdb.com/api.php?amount=1&category=10&difficulty=medium&type=multiple'
