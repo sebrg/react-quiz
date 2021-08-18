@@ -53,10 +53,7 @@ export default class Api extends React.Component<Props, State> {
         ))
         this.setState( {
         disableBtn: true,           
-        })
-           
-        /* console.log(value)
-        console.log("here", questions)  */   
+        })   
           
     }
 
@@ -77,7 +74,7 @@ export default class Api extends React.Component<Props, State> {
         else {
             console.log("wrong answer")
             this.setState({
-            question: this.state.question < 6 //satte till 6 tills jag hittar lösning
+            question: this.state.question < 6 
             ? this.state.question + 1
             : 6
         });
@@ -139,7 +136,7 @@ export default class Api extends React.Component<Props, State> {
 
         this.countScore()
 
-        if(this.state.question >= 6) { // satte till 6 tills jag hittar lösning
+        if(this.state.question >= 6) { 
             /* console.log("ending game at 5 questions", this.state.question) */  
             let x: any  = localStorage.getItem('user')
             let y: any  = localStorage.getItem('currentUser')
