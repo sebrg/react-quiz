@@ -1,5 +1,5 @@
 
-import { exit } from 'process';
+import Button from '@material-ui/core/Button';
 import React, { CSSProperties } from 'react';
 import { ThemedCSSProperties, ThemeContext } from './contexts/themeContext';
 import { 
@@ -18,7 +18,6 @@ interface Props {
 
 export interface State {
     levels: number [],
-    disableBtn: boolean
 }
 
 
@@ -33,7 +32,6 @@ export default class GamePlan extends React.Component <Props, State> {
         
         this.state={        
             levels: levelsArray,
-            disableBtn: false,
         };      
        
     }
@@ -74,7 +72,7 @@ export default class GamePlan extends React.Component <Props, State> {
 render() {
     let storedLevel: any = localStorage.getItem('levels')
     let parseMe = JSON.parse(storedLevel)
-    /* if(!storedLevel == null) { */
+    if(storedLevel) {
         
         for (let i = 0; i < parseMe.length; i++) {
             const element = parseMe[i];
@@ -82,18 +80,26 @@ render() {
             this.removeDoneLvls(element)
         }
         console.log(parseMe) 
-    /* } */
+    }
+
+    if(storedLevel && parseMe.length >= 10) {
+        return (
+            <div style={{ ...fullScreen, ...columnFlex, ...centerStyle }}>
+                <Button variant="contained" color="primary">Play again & submit score</Button>
+            </div>
+        )
+    }
     
     const{levels}=this.state      
-        /* console.log(levels, '70')  */ 
-        let storedUser:any = localStorage.getItem('user')
-        let parsedObject = JSON.parse(storedUser)
-                        
-            if(storedUser == null || storedUser == 'null') {
-                return (
-                    <div><User/></div>
-                    )
-                }
+    /* console.log(levels, '70')  */ 
+    let storedUser:any = localStorage.getItem('user')
+    let parsedObject = JSON.parse(storedUser)
+    
+    if(storedUser == null || storedUser == 'null') {
+        return (
+            <div><User/></div>
+            )
+        }
                 
 
         else {
@@ -112,7 +118,7 @@ render() {
                       
                       {levels.map((level) =>
                           <div style={divWhite}>
-                          <Link onClick={() => this.removeDoneLvls(level)} to={`/game/${level}`} /* style={{...divBlack, ...btnHover}} */> <button value={level} disabled={this.state.disableBtn} style={{...divBlack, ...btnHover}}>  {level} </button></Link>
+                          <Link onClick={() => this.removeDoneLvls(level)} to={`/game/${level}`} /* style={{...divBlack, ...btnHover}} */> <button value={level} style={{...divBlack, ...btnHover}}>  {level} </button></Link>
                           </div>
 
                     )};
