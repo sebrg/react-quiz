@@ -140,7 +140,7 @@ render() {
             {({ theme }) => (
                 <div style={{...fullScreen, ...columnFlex, ...centerStyle }}>
                     <div style={anotherDiv}>
-                    <h4 style={background(theme)}/* style={h3Div} */> user: {parsedObject.username} </h4>
+                    <h4 style={background(theme,)}/* style={h3Div} */> user: {parsedObject.username} </h4>
                     <h5 style={background(theme)}> score: {parsedObject.score} </h5>
                     </div>
                   <h3 style={background(theme)}>Choose level...</h3>
@@ -151,7 +151,7 @@ render() {
                           <Link onClick={() => this.removeDoneLvls(level)} to={`/game/${level}`} /* style={{...divBlack, ...btnHover}} */> <button value={level} style={{...divBlack, ...btnHover}}>  {level} </button></Link>
                           </div>
 
-                    )};
+                    )}
                       </div> 
 
                   </div>
@@ -167,17 +167,14 @@ render() {
 }
 
 const columnFlex: CSSProperties = { 
-
     display: 'flex', 
-
     flexDirection: 'column', 
 
 }; 
 
- 
  const fullScreen: CSSProperties = { 
     width: '100%', 
-    maxHeight: '110%', 
+    height: '100%', 
     margin: '0'
 }  
 
@@ -189,19 +186,16 @@ const centerStyle: CSSProperties = {
 
 const anotherDiv: CSSProperties = {
     color: 'white',
-    marginTop: '-1em',
 }
 
 
 const divPlan: CSSProperties  = {
-    width: '22em', 
-    height: '30em', 
-    marginTop: '1em', 
+    width: '30em', 
+    height: '18em', 
     margin: 0, 
     display: 'flex', 
     flexWrap: 'wrap', 
-    justifyContent: 'center', 
-    alignItems: 'center',  
+    justifyContent: 'center',  
 }
 
 const divBlack: CSSProperties = {
@@ -227,8 +221,8 @@ const btnHover: CSSProperties = {
 }
 
 const divWhite: CSSProperties = {
-    width: '30%',
-    height: '4em',
+    width: '27%',
+    height: '1em',
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
@@ -245,5 +239,6 @@ const divSpace: CSSProperties = {
 
 const background: ThemedCSSProperties = (theme) => ({
     color: theme.foreground.primary,
+    fontFamily: 'sans-serif',
     
 })
