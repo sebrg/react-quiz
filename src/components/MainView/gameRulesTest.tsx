@@ -25,6 +25,7 @@ const modalStyle: React.CSSProperties = {
     display: 'flex',
     justifyContent: 'center', 
     flexDirection: 'column',
+    minWidth: '310px'
 } 
 
 
@@ -32,7 +33,7 @@ const ruleGameTitle: React.CSSProperties = {
     fontFamily: 'Bungee',
     display: 'flex',
     justifyContent: 'center', 
-    alignItems: 'center'
+    alignItems: 'center',
 } 
 
 const pstyle: React.CSSProperties = {

@@ -220,7 +220,7 @@ const MainDiv : CSSProperties = {
     display: 'flex',
     width: '100%',
     height: '85vh',
-
+    overflow: 'hidden'
 }
 
 const questionDiv : CSSProperties = {
@@ -228,7 +228,6 @@ const questionDiv : CSSProperties = {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-evenly',
     alignItems: 'center',
     fontFamily: 'sans-serif',
     
@@ -240,7 +239,6 @@ const optionDiv : CSSProperties = {
     display: 'flex',
     justifyContent: 'flex',
     alignItems: 'center',
-    marginTop: '0.2em',
     marginBottom: '0.2em',
     margin: '0.5em'
 }

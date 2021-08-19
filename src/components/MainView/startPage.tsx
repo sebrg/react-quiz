@@ -100,8 +100,9 @@ const buttonRule: CSSProperties = {
     backgroundColor: '#3f51b5'
 }
 
-const closeBtn: CSSProperties = {
+const closeBtn: CSSProperties = { //modalknapp
     fontFamily: 'Bungee',
     fontSize: '10px',
     backgroundColor: '#3f51b5',
+    margin: '10px' 
 }
