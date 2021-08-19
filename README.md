@@ -15,6 +15,8 @@ RULES visar spelets regler och HIGHSCORE visar en lista över de högsta insamla
 
 När du väljer en ‘level’ presenteras i turordning 5 frågor och 4 svarsalternativ. Du markerar önskat svarsalternativ och är valt svarsalternativ rätt får du en poäng, men är svaret fel får du inget poäng. Därefter presenteras nästa fråga. När du svarat på de 5 frågorna kommer du tillbaka till spelplanen (GamePlan), eventuella poäng uppdateras, genomförd ‘level’ syns inte längre och du väljer nu nästa ‘level’. När du svarat på frågorna på alla ‘levels’ sparas dina totala poäng (score) och presenteras på highscore-listan i HIGHSCORE. Du kan nu välja att avsluta spelet eller fortsätta till “nästa” spelplan. 
 
+Appen har byggts huvudsakligen runt API:et som är den största komponenten, questionAPI innehåller det mesta som har med spellogiken att göra. React context används för att implemntera ett tema, med Switch-knappen i navbaren kan man anpassa färgtemat på sidan. Vi använder oss av localstorage för att förvara en highscorelista, namn på spelare och spara vilken 'levlar' som är spelade. Mycket av designen är från MaterialUI. Vi har också en modal som innehåller regler/info på startsida. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -23,7 +25,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Clone down this repository. To install globally on you machine you need:
 
-### 'npm istall'
+### 'npm install'
 
 
 In the project directory, you can run:

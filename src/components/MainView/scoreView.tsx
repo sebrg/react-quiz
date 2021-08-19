@@ -12,23 +12,45 @@ import {
 export default function ScorePage() {
     
     let getHighscore = JSON.parse(localStorage.getItem('highscore') as string)
+    if(getHighscore) {
 
-    return (
-
-        <div style={divstyleScore}>
-            <div style={scoreStyle}>
-                <h1 style={scoreTitle}>HIGH SCORE</h1>
-                {getHighscore.map((element: any) =>
-                          <div>
-                              {element.username} {element.score}p
-                              <hr style={hrStyle}></hr>
-                          </div>
-                    )}
+        return (
     
+            <div style={divstyleScore}>
+                <div style={scoreStyle}>
+                    <h1 style={scoreTitle}>HIGH SCORE</h1>
+                    {getHighscore.map((element: any) =>
+                              <div>
+                                  {element.username} {element.score}p
+                                  <hr style={hrStyle}></hr>
+                              </div>
+                        )}
+        
+                </div>
             </div>
-        </div>
+    
+        )
+    }
 
-    )
+    else {
+
+        return (
+        <div style={divstyleScore}>
+        <div style={scoreStyle}>
+            <h1 style={scoreTitle}>HIGH SCORE</h1>
+            
+                      <div>
+                          Highscore list is empty
+                          <hr style={hrStyle}></hr>
+                      </div>
+            
+
+        </div>
+    </div>
+
+        )
+    }
+
 }
 
 const divstyleScore: React.CSSProperties = {
