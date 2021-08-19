@@ -40,11 +40,11 @@ export default class GamePlan extends React.Component <Props, State> {
     
     let storedLevel: any = localStorage.getItem('levels')
     let parseMe = JSON.parse(storedLevel)
-    /* console.log(parseMe) */ 
+
     if(!parseMe == null) {
 
         for (let i = 0; i < parseMe.length; i++) {
-            console.log(parseMe[i])
+     
             
         }
     }    
@@ -61,9 +61,7 @@ export default class GamePlan extends React.Component <Props, State> {
             })
         
         }          
-       /*  console.log(levels)
-        console.log(this.state.levels, 'in state') */
-        
+     
     }
 }
 
@@ -109,7 +107,7 @@ render() {
             
             this.removeDoneLvls(element)
         }
-        console.log(parseMe) 
+    
     }
 
     if(storedLevel && parseMe.length >= 10) {
@@ -121,7 +119,7 @@ render() {
     }
     
     const{levels}=this.state      
-    /* console.log(levels, '70')  */ 
+ 
     let storedUser:any = localStorage.getItem('user')
     let parsedObject = JSON.parse(storedUser)
     

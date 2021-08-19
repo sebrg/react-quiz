@@ -59,7 +59,7 @@ export default class Api extends React.Component<Props, State> {
 
     checkifCorrect = (answer: string, correctAnswer: string) => {
         if(answer === correctAnswer) {
-        console.log("correct answer")
+   
         this.setState( {
             score: this.state.score + 1,
                     
@@ -72,7 +72,7 @@ export default class Api extends React.Component<Props, State> {
             
         }
         else {
-            console.log("wrong answer")
+          
             this.setState({
             question: this.state.question < 6 
             ? this.state.question + 1
@@ -104,7 +104,7 @@ export default class Api extends React.Component<Props, State> {
                 questions: data.results,
                 category: data.results[0].category
             })
-            console.log("question", this.state.questions) 
+           
         })             
     }
 
@@ -137,7 +137,7 @@ export default class Api extends React.Component<Props, State> {
         this.countScore()
 
         if(this.state.question >= 6) { 
-            /* console.log("ending game at 5 questions", this.state.question) */  
+      
             let x: any  = localStorage.getItem('user')
             let y: any  = localStorage.getItem('currentUser')
             let parsedObject = JSON.parse(x)
