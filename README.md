@@ -1,8 +1,30 @@
+# Project - REACT QUIZ
+Projektgrupp: Linda Gustafsson, Sebastian Borg och Susan Isaksson 
+Utbildning: Webbutveckling för e-handel/Medieinstitutet Göteborg år 2021 
+
+Länk till GitHub http://github.com/sebrg/react-quiz
+
+Vi har använt API: https://opendb.com
+## Beskrivning 
+
+Vi har skapat en Webb-App med hjälp av CreateReact-App och TypeScript vilket i stort går ut på att samla poäng genom att svara rätt på frågor.  
+
+På startsidan har du tre valmöjligheter; PLAY, HIGHSCORE och RULES. 
+
+RULES visar spelets regler och HIGHSCORE visar en lista över de högsta insamlade poängen (Namn och poäng). Väljer du PLAY i vår App får du först ange ett “spelarnamn” innan du kommer till nästa steg, då kommer du till spelplanen (GamePlan). På spelplanen (GamePlan) finns 10 ‘levels’ vilket motsvarar varsin kategori. På spelplanen visas även “spelarnamnet”, din totala poäng (score) och tillgängliga ‘levels’.  
+
+När du väljer en ‘level’ presenteras i turordning 5 frågor och 4 svarsalternativ. Du markerar önskat svarsalternativ och är valt svarsalternativ rätt får du en poäng, men är svaret fel får du inget poäng. Därefter presenteras nästa fråga. När du svarat på de 5 frågorna kommer du tillbaka till spelplanen (GamePlan), eventuella poäng uppdateras, genomförd ‘level’ syns inte längre och du väljer nu nästa ‘level’. När du svarat på frågorna på alla ‘levels’ sparas dina totala poäng (score) och presenteras på highscore-listan i HIGHSCORE. Du kan nu välja att avsluta spelet eller fortsätta till “nästa” spelplan. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
+
+Clone down this repository. To install globally on you machine you need:
+
+### 'npm istall'
+
 
 In the project directory, you can run:
 
