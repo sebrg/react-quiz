@@ -21,6 +21,7 @@ export default function ScorePage() {
                 {getHighscore.map((element: any) =>
                           <div>
                               {element.username} {element.score}p
+                              <hr style={hrStyle}></hr>
                           </div>
                     )}
     
@@ -32,11 +33,12 @@ export default function ScorePage() {
 
 const divstyleScore: React.CSSProperties = {
     width: '100%',
-    height: '80vh',
+    height: '100vh',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    marginTop: '10px'
 }
 
 const scoreTitle: React.CSSProperties = {
@@ -45,12 +47,19 @@ const scoreTitle: React.CSSProperties = {
 }
 
 const scoreStyle: React.CSSProperties = {
-    width: '375px',
+    width: '350px',
     height: '100%',
     display: 'flex',
     backgroundColor: '#EAEAEA',
     flexDirection: 'column',
     flexWrap: 'wrap',
-    justifyContent: 'center',
     alignItems: 'center',
+    fontFamily: 'sans-serif',
+
+}
+
+const hrStyle: React.CSSProperties = {
+    width: '100%',
+    backgroundColor: 'black',
+    height: '2px'
 }
