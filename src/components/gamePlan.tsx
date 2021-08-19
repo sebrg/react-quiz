@@ -144,16 +144,18 @@ render() {
                     <h5 style={background(theme)}> score: {parsedObject.score} </h5>
                     </div>
                   <h3 style={background(theme)}>Choose level...</h3>
+                  <div style={gamePlan}>
                   <div style={divPlan}>
                       
                       {levels.map((level) =>
                           <div style={divWhite}>
-                          <Link onClick={() => this.removeDoneLvls(level)} to={`/game/${level}`} /* style={{...divBlack, ...btnHover}} */> <button value={level} style={{...divBlack, ...btnHover}}>  {level} </button></Link>
+                          <Link onClick={() => this.removeDoneLvls(level)} to={`/game/${level}`}> <button value={level} style={{...divBlack, ...btnHover}}>  {level} </button></Link>
                           </div>
 
                     )}
                       </div> 
 
+                  </div>
                   </div>
 
                 )}
@@ -188,10 +190,18 @@ const anotherDiv: CSSProperties = {
     color: 'white',
 }
 
+const gamePlan: CSSProperties = {
+    width: '100vw', 
+    height: '70vh', 
+    display: 'flex', 
+    flexWrap: 'wrap', 
+    justifyContent: 'center',  
+}
+
 
 const divPlan: CSSProperties  = {
-    width: '30em', 
-    height: '18em', 
+    width: '60%', 
+    height: '65%', 
     margin: 0, 
     display: 'flex', 
     flexWrap: 'wrap', 
